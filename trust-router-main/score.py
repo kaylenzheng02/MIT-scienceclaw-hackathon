@@ -95,7 +95,7 @@ def main() -> int:
         print(f"Careful: the top tier holds only {best['n']} answers, so that "
               "figure is noisy.")
     print(f"\nWrote {OUT}. Rebuild the page with:\n"
-          "  python3 -c \"import json;t=open('ui_template.html').read();"
+          "  python3 -c \"import json;t=open('templates/ui_template.html').read();"
           "d=json.load(open('results.json'));d['rows']=sorted(d['rows'],"
           "key=lambda r:-r['trust']);open('index.html','w').write("
           "t.replace('__DATA__',json.dumps(d,separators=(',',':'))"

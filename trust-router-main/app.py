@@ -41,6 +41,15 @@ ANALYST, LIBRARIAN, CRITIC = "claude-sonnet-5-5", "claude-haiku-5-5", "claude-op
 PRICES = {"claude-sonnet-5-5": (2, 10), "claude-haiku-5-5": (0.10, 0.50),
           "claude-opus-5-5": (4, 20)}
 
+# Trust the operating system's certificates, not only Python's own list.
+# Antivirus that scans HTTPS (AVG, Avast, ...) re-signs traffic with a root only
+# the OS knows, and without this every paper search fails on SSL.
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    pass
+
 # Quorum already solved paper search and PDF reading, so borrow it rather than
 # writing a worse version here.
 sys.path.insert(0, str(Path.home() / "ai-scientist" / "quorum"))
@@ -132,6 +141,11 @@ def lane_step(i: int, key: str, label: str, agent: str, state: str,
 class Client:
     def __init__(self, cap: float = 2.0):
         from anthropic import Anthropic
+        # A key pasted with a trailing newline is an illegal header, which the
+        # SDK reports only as "Connection error", so strip it here.
+        for var in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"):
+            if os.environ.get(var):
+                os.environ[var] = os.environ[var].strip()
         self.api, self.cap = Anthropic(), cap
 
     def ask(self, model: str, prompt: str, max_tokens: int = 900) -> str:
