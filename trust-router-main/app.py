@@ -164,7 +164,12 @@ class Client:
 # code runs, but canned replies stand in for the models, so it needs no key and
 # costs nothing. Start it with:  python app.py --demo
 DEMO = "--demo" in sys.argv
-DEMO_FILE = HERE / "demo_run.json"
+DEMO_FILE = HERE / "demo_runs.json"
+
+
+def demo_runs() -> list[dict]:
+    """The saved runs demo mode can replay, one per question."""
+    return json.loads(DEMO_FILE.read_text(encoding="utf-8"))["runs"]
 
 
 class DemoClient:
@@ -212,9 +217,13 @@ def parse_claims(text: str) -> list[str]:
 
 def run(question: str, cap: float) -> None:
     try:
-        demo = json.loads(DEMO_FILE.read_text(encoding="utf-8")) if DEMO else None
-        if demo:
-            question = demo["question"]   # the canned replies only fit this question
+        demo = None
+        if DEMO:
+            # Replay the saved run for this question; the page only offers saved
+            # questions in demo mode, so the fallback is just a safety net.
+            runs = demo_runs()
+            demo = next((r for r in runs if r["question"] == question.strip()), runs[0])
+            question = demo["question"]
         with LOCK:
             STATE.update({"status": "running", "tick": time.time(),
                           "question": question, "steps": [], "demo": DEMO,
@@ -445,6 +454,8 @@ if __name__ == "__main__":
                  "Or try it free with saved results:  python3 app.py --demo")
     print(f"Open http://localhost:{PORT}  (the app is at /app, ctrl-C to stop)")
     STATE["demo"] = DEMO   # so the page can say so before the first run
+    if DEMO:   # the questions demo mode can answer, so the page offers only those
+        STATE["demo_questions"] = [r["question"] for r in demo_runs()]
     if DEMO:
         print("Demo mode: replays a saved run. No API key used, nothing is spent.")
     else:

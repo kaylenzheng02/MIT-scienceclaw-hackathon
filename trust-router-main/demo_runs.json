@@ -1,0 +1,817 @@
+{
+ "_note": "Saved runs for demo mode. Papers are real (Europe PMC via Quorum); the findings and agent replies are hand-written examples, not live model output.",
+ "runs": [
+  {
+   "question": "Does higher ESR1 expression predict better survival in ER-positive breast cancer?",
+   "papers": [
+    {
+     "pmid": "42708797",
+     "title": "PGR expression as a pharmacogenomic companion biomarker to GENE70-derived genomic risk in ER-positive/HER2-negative breast cancer ",
+     "authors": "Can O.",
+     "journal": "Pak J Pharm Sci",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 100,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Cox regression, Kaplan-Meier analysis and subgroup comparisons were used to assess relationships between PGR expression, clinicopathologic variables, molecular features and survival outcomes. Results Across the three independent cohorts, low transcriptomic PGR expression was consistently associated "
+    },
+    {
+     "pmid": "42794648",
+     "title": "Study of Estrogen Receptor-Mediated PGx-eQTLs Identifies Genetic Determinants of Breast Cancer Endocrine Therapy Response",
+     "authors": "Meng M et al.",
+     "journal": "Int J Mol Sci",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 85,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "We identified two ER-mediated PGx-eQTL SNP-gene pairs associated with breast cancer prognosis post-treatment with E2 or TAM. Notable loci included E2-regulated MRPL15 and TAM-regulated SYCP3 , which have effects in a genotype-dependent manner, with genotype-dependent survival outcomes, from worse to"
+    },
+    {
+     "pmid": "42811741",
+     "title": "Optimizing the ER Cutoff in HER2-Positive Breast Cancer: ER ≥ 50% Predicts Low pCR Rates and Resistance to Antibody-Drug Conjugates in the Neoadjuvant Setting",
+     "authors": "Du T et al.",
+     "journal": "Cancer Med",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 60,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Results ER ≥ 50% positivity was identified as the optimal predictive cutoff (bootstrap 95% CI: 25.0%-77.5%) and was an independent predictor of significantly lower pCR rates in multivariate analysis (OR = 0.27; 95% CI: 0.19-0.40; p Conclusions ER ≥ 50% positivity defines a clinically and biologicall"
+    },
+    {
+     "pmid": "42943732",
+     "title": "Exploring the Underlying Molecular Mechanisms of Chaetomugilin Q in Breast Cancer Using Network Pharmacology, Molecular Docking, and Bioinformatics",
+     "authors": "He Q et al.",
+     "journal": "Molecules",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 36,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Bioinformatics analyses based on independent public databases indicated that these candidate core targets exhibited differential expression at the mRNA and protein levels and were associated with patient prognosis, mutation status, and immune cell infiltration, providing clinical and biological cont"
+    },
+    {
+     "pmid": "36334560",
+     "title": "Tumour break load is a biologically relevant feature of genomic instability with prognostic value in colorectal cancer",
+     "authors": "Lakbir S et al.",
+     "journal": "Eur J Cancer",
+     "year": "2022",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 35,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter"
+    },
+    {
+     "pmid": "29625055",
+     "title": "An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics",
+     "authors": "Liu J et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 34,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co"
+    },
+    {
+     "pmid": "42820285",
+     "title": "Breast cancer immunogenicity as a spectrum: evolving concepts and therapeutic implications",
+     "authors": "Kay J et al.",
+     "journal": "J Clin Invest",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 32,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Immunotherapy has revolutionized the therapeutic landscape for many cancers, but its application in solid tumors has lagged. There is now evidence that immunotherapy can improve outcomes in triple-negative breast cancer, but hormone receptor-positive (HR+) breast cancer has traditionally been consid"
+    },
+    {
+     "pmid": "42472109",
+     "title": "The role of serologic biomarkers \"liquid biopsy\" in the fight against breast cancer: From biological foundations to clinical impact",
+     "authors": "Li Y et al.",
+     "journal": "iScience",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 21,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Liquid biopsy, analyzing circulating tumor-derived components, including ctDNA, circulating tumor cells, microRNAs, and exosomes, has emerged as a key tool in precision oncology. This review synthesizes evidence from the past five years, covering biological mechanisms, analytical platforms, clinical"
+    },
+    {
+     "pmid": "29617662",
+     "title": "Driver Fusions and Their Implications in the Development and Treatment of Human Cancers",
+     "authors": "Gao Q et al.",
+     "journal": "Cell Rep",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 18,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy."
+    },
+    {
+     "pmid": "29850653",
+     "title": "Landscape of Microsatellite Instability Across 39 Cancer Types",
+     "authors": "Bonneville R et al.",
+     "journal": "JCO Precis Oncol",
+     "year": "2017",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 17,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average"
+    },
+    {
+     "pmid": "29622463",
+     "title": "Genomic and Functional Approaches to Understanding Cancer Aneuploidy",
+     "authors": "Taylor AM et al.",
+     "journal": "Cancer Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 13,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl"
+    },
+    {
+     "pmid": "29625048",
+     "title": "Cell-of-Origin Patterns Dominate the Molecular Classification of 10,000 Tumors from 33 Types of Cancer",
+     "authors": "Hoadley KA et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 8,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "We conducted comprehensive integrative molecular analyses of the complete set of tumors in The Cancer Genome Atlas (TCGA), consisting of approximately 10,000 specimens and representing 33 types of cancer. We performed molecular clustering using data on chromosome-arm-level aneuploidy, DNA hypermethy"
+    },
+    {
+     "pmid": "29625050",
+     "title": "Oncogenic Signaling Pathways in The Cancer Genome Atlas",
+     "authors": "Sanchez-Vega F et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 7,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan"
+    },
+    {
+     "pmid": "29596782",
+     "title": "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines",
+     "authors": "Ellrott K et al.",
+     "journal": "Cell Syst",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 1,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr"
+    }
+   ],
+   "lit_stats": {
+    "papers": 17,
+    "full": 0,
+    "passages": 12,
+    "ranked_for": "Does higher ESR1 expression predict better survival in ER-positive breast cancer?"
+   },
+   "passages": "[PMID 42708797] Cox regression, Kaplan-Meier analysis and subgroup comparisons were used to assess relationships between PGR expression, clinicopathologic variables, molecular features and survival outcomes. Results Across the three independent cohorts, low transcriptomic PGR expression was consistently associated \n\n[PMID 42794648] We identified two ER-mediated PGx-eQTL SNP-gene pairs associated with breast cancer prognosis post-treatment with E2 or TAM. Notable loci included E2-regulated MRPL15 and TAM-regulated SYCP3 , which have effects in a genotype-dependent manner, with genotype-dependent survival outcomes, from worse to\n\n[PMID 42811741] Results ER ≥ 50% positivity was identified as the optimal predictive cutoff (bootstrap 95% CI: 25.0%-77.5%) and was an independent predictor of significantly lower pCR rates in multivariate analysis (OR = 0.27; 95% CI: 0.19-0.40; p Conclusions ER ≥ 50% positivity defines a clinically and biologicall\n\n[PMID 42943732] Bioinformatics analyses based on independent public databases indicated that these candidate core targets exhibited differential expression at the mRNA and protein levels and were associated with patient prognosis, mutation status, and immune cell infiltration, providing clinical and biological cont\n\n[PMID 36334560] RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter\n\n[PMID 29625055] For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co\n\n[PMID 42820285] Immunotherapy has revolutionized the therapeutic landscape for many cancers, but its application in solid tumors has lagged. There is now evidence that immunotherapy can improve outcomes in triple-negative breast cancer, but hormone receptor-positive (HR+) breast cancer has traditionally been consid\n\n[PMID 42472109] Liquid biopsy, analyzing circulating tumor-derived components, including ctDNA, circulating tumor cells, microRNAs, and exosomes, has emerged as a key tool in precision oncology. This review synthesizes evidence from the past five years, covering biological mechanisms, analytical platforms, clinical\n\n[PMID 29617662] Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy.\n\n[PMID 29850653] Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average\n\n[PMID 29622463] Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl\n\n[PMID 29625048] We conducted comprehensive integrative molecular analyses of the complete set of tumors in The Cancer Genome Atlas (TCGA), consisting of approximately 10,000 specimens and representing 33 types of cancer. We performed molecular clustering using data on chromosome-arm-level aneuploidy, DNA hypermethy\n\n[PMID 29625050] Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan\n\n[PMID 29596782] The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr",
+   "analyst": "Tumours with higher ESR1 mRNA expression show longer overall survival than those in the lowest quartile of ER-positive breast cancer.\nHigh ESR1 expression predicts greater benefit from adjuvant endocrine therapy such as tamoxifen.\nESR1 expression is associated with lower Ki-67 proliferation scores in ER-positive tumours.\nActivating ESR1 mutations in metastatic disease are associated with shorter progression-free survival on aromatase inhibitors.\nESR1 levels matter for prognosis in breast cancer.",
+   "replies": {
+    "Tumours with higher ESR1 mRNA expression show longer overall survival than those in the lowest quartile of ER-positive breast cancer.": {
+     "librarian": "SUPPORTED - Passages link high ER expression levels to better outcomes in ER-positive cohorts.",
+     "critic": "SOUND - Specific, testable against TCGA survival data, and consistent with the ranked passages."
+    },
+    "High ESR1 expression predicts greater benefit from adjuvant endocrine therapy such as tamoxifen.": {
+     "librarian": "SUPPORTED - ER level is described as a predictor of endocrine response in the retrieved work.",
+     "critic": "SOUND - Clear direction and a measurable treatment outcome; passages are on topic."
+    },
+    "ESR1 expression is associated with lower Ki-67 proliferation scores in ER-positive tumours.": {
+     "librarian": "UNCLEAR - No retrieved passage reports Ki-67 against ESR1 level directly.",
+     "critic": "SHAKY - Plausible, but the passages never measure proliferation, so nothing here supports it."
+    },
+    "Activating ESR1 mutations in metastatic disease are associated with shorter progression-free survival on aromatase inhibitors.": {
+     "librarian": "SUPPORTED - Several passages discuss ESR1-mutated advanced disease and endocrine resistance.",
+     "critic": "SHAKY - This is about mutations, not expression level, so it drifts from the question asked."
+    },
+    "ESR1 levels matter for prognosis in breast cancer.": {
+     "librarian": "UNCLEAR - Too broad to match against any specific passage.",
+     "critic": "SHAKY - No direction, cohort or outcome; no experiment could settle it."
+    }
+   }
+  },
+  {
+   "question": "Is KRAS G12C mutation associated with worse survival in lung adenocarcinoma?",
+   "papers": [
+    {
+     "pmid": "42782861",
+     "title": "KRAS in Colorectal Cancer: Tumorigenesis, Surgical Implications and Evolving Treatment Target",
+     "authors": "Iftikhar S et al.",
+     "journal": "Curr Oncol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 100,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Increasing evidence also supports their role as prognostic biomarkers, with KRAS-mutant tumours associated with increased recurrence risk and reduced survival, including in patients undergoing hepatic metastasectomy. Therapeutically, recent advances, most notably KRAS G12C inhibitors and combination"
+    },
+    {
+     "pmid": "42027638",
+     "title": "Targeting TROP-2 in treatment-resistant non-small cell lung cancer harboring the KRAS G12C mutation and TROP-2 upregulation: A case report",
+     "authors": "Sun L et al.",
+     "journal": "Oncol Lett",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 98,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "However, the results remain unsatisfactory, likely due to the heterogeneity of tumor cells and the presence of diverse co-mutations. No consensus has been reached regarding the treatment of patients with concurrent TROP-2 upregulation and KRAS mutations. The present report describes the case of a pa"
+    },
+    {
+     "pmid": "42945499",
+     "title": "Genomic Landscape of Gastroenteropancreatic Neuroendocrine Neoplasms Using Panel Sequencing",
+     "authors": "Zaidi A et al.",
+     "journal": "JCO Precis Oncol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 91,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Annotated alterations were identified in 34.1% of all patients, with higher rates in NECs compared with NETs (74.4% v 28.5%, P BRAF V600E (2.2%; 14.8% of all colorectal NECs), KRAS -activating mutations (6.8%; 0.35% G12C), and NTRK fusions (0.2%). Annotation rates varied by primary site with the hig"
+    },
+    {
+     "pmid": "29625055",
+     "title": "An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics",
+     "authors": "Liu J et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 50,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co"
+    },
+    {
+     "pmid": "36334560",
+     "title": "Tumour break load is a biologically relevant feature of genomic instability with prognostic value in colorectal cancer",
+     "authors": "Lakbir S et al.",
+     "journal": "Eur J Cancer",
+     "year": "2022",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 42,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "The present study aimed to characterise the biological impact and clinical relevance of TBL in CRC. Methods Disease-free survival and SCNA data were obtained from The Cancer Genome Atlas and two independent CRC studies. TBL was defined as the sum of SCNA-associated SVs."
+    },
+    {
+     "pmid": "30643250",
+     "title": "Molecular landmarks of tumor hypoxia across cancer types",
+     "authors": "Bhandari V et al.",
+     "journal": "Nat Genet",
+     "year": "2019",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 33,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "In ten tumor types, hypoxia was associated with elevated genomic instability. In all 19 tumor types, hypoxic tumors exhibited characteristic driver-mutation signatures. We observed widespread hypoxia-associated dysregulation of microRNAs (miRNAs) across cancers and functionally validated miR-133a-3p"
+    },
+    {
+     "pmid": "42639301",
+     "title": "Immune checkpoint inhibitor-based combinatory and alternative strategies for immune treatment of lung cancers",
+     "authors": "Park JY et al.",
+     "journal": "Front Immunol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 29,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Immune checkpoint inhibitors (ICIs), particularly antibodies targeting PD-1/PD-L1 and CTLA-4, have reshaped the treatment landscape of lung cancers, most notably non-small cell lung cancer (NSCLC). Nevertheless, only a subset of patients achieve durable benefit due to primary and acquired resistance"
+    },
+    {
+     "pmid": "29850653",
+     "title": "Landscape of Microsatellite Instability Across 39 Cancer Types",
+     "authors": "Bonneville R et al.",
+     "journal": "JCO Precis Oncol",
+     "year": "2017",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 23,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Therefore, less is known about the prevalence and extent of MSI among other types of cancer. Methods Using our recently published MSI-calling software, MANTIS, we analyzed whole-exome data from 11,139 tumor-normal pairs from The Cancer Genome Atlas and Therapeutically Applicable Research to Generate"
+    },
+    {
+     "pmid": "42449579",
+     "title": "Mutations of Kinases and GTPases in Cancers",
+     "authors": "Cicenas J et al.",
+     "journal": "Cancers (Basel)",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 23,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Similarly, mutations affecting inositol kinases, notably PI3KCA, hyperactivate the PI3K/AKT pathway, promoting relentless cell survival and resistance to apoptosis. GTPases, particularly Ras family members (KRAS, NRAS, HRAS), are classical oncogenes where single amino acid substitutions impair their"
+    },
+    {
+     "pmid": "29596782",
+     "title": "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines",
+     "authors": "Ellrott K et al.",
+     "journal": "Cell Syst",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 17,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "We present best practices for applying an ensemble of seven mutation-calling algorithms with scoring and artifact filtering. The dataset created by this analysis includes 3.5 million somatic variants and forms the basis for PanCan Atlas papers. The results have been made available to the research co"
+    },
+    {
+     "pmid": "29622463",
+     "title": "Genomic and Functional Approaches to Understanding Cancer Aneuploidy",
+     "authors": "Taylor AM et al.",
+     "journal": "Cancer Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 16,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl"
+    },
+    {
+     "pmid": "32214244",
+     "title": "Microbiome analyses of blood and tissues suggest cancer diagnostic approach",
+     "authors": "Poore GD et al.",
+     "journal": "Nature",
+     "year": "2020",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 15,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "In addition, we could discriminate among samples from healthy, cancer-free individuals (n = 69) and those from patients with multiple types of cancer (prostate, lung, and melanoma; 100 samples in total) solely using plasma-derived, cell-free microbial nucleic acids. This potential microbiome-based o"
+    },
+    {
+     "pmid": "29625048",
+     "title": "Cell-of-Origin Patterns Dominate the Molecular Classification of 10,000 Tumors from 33 Types of Cancer",
+     "authors": "Hoadley KA et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 0,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": ""
+    },
+    {
+     "pmid": "29617662",
+     "title": "Driver Fusions and Their Implications in the Development and Treatment of Human Cancers",
+     "authors": "Gao Q et al.",
+     "journal": "Cell Rep",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 0,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": ""
+    }
+   ],
+   "lit_stats": {
+    "papers": 17,
+    "full": 0,
+    "passages": 12,
+    "ranked_for": "Is KRAS G12C mutation associated with worse survival in lung adenocarcinoma?"
+   },
+   "passages": "[PMID 42782861] Increasing evidence also supports their role as prognostic biomarkers, with KRAS-mutant tumours associated with increased recurrence risk and reduced survival, including in patients undergoing hepatic metastasectomy. Therapeutically, recent advances, most notably KRAS G12C inhibitors and combination\n\n[PMID 42027638] However, the results remain unsatisfactory, likely due to the heterogeneity of tumor cells and the presence of diverse co-mutations. No consensus has been reached regarding the treatment of patients with concurrent TROP-2 upregulation and KRAS mutations. The present report describes the case of a pa\n\n[PMID 42945499] Annotated alterations were identified in 34.1% of all patients, with higher rates in NECs compared with NETs (74.4% v 28.5%, P BRAF V600E (2.2%; 14.8% of all colorectal NECs), KRAS -activating mutations (6.8%; 0.35% G12C), and NTRK fusions (0.2%). Annotation rates varied by primary site with the hig\n\n[PMID 29625055] For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co\n\n[PMID 36334560] The present study aimed to characterise the biological impact and clinical relevance of TBL in CRC. Methods Disease-free survival and SCNA data were obtained from The Cancer Genome Atlas and two independent CRC studies. TBL was defined as the sum of SCNA-associated SVs.\n\n[PMID 30643250] In ten tumor types, hypoxia was associated with elevated genomic instability. In all 19 tumor types, hypoxic tumors exhibited characteristic driver-mutation signatures. We observed widespread hypoxia-associated dysregulation of microRNAs (miRNAs) across cancers and functionally validated miR-133a-3p\n\n[PMID 42639301] Immune checkpoint inhibitors (ICIs), particularly antibodies targeting PD-1/PD-L1 and CTLA-4, have reshaped the treatment landscape of lung cancers, most notably non-small cell lung cancer (NSCLC). Nevertheless, only a subset of patients achieve durable benefit due to primary and acquired resistance\n\n[PMID 29850653] Therefore, less is known about the prevalence and extent of MSI among other types of cancer. Methods Using our recently published MSI-calling software, MANTIS, we analyzed whole-exome data from 11,139 tumor-normal pairs from The Cancer Genome Atlas and Therapeutically Applicable Research to Generate\n\n[PMID 42449579] Similarly, mutations affecting inositol kinases, notably PI3KCA, hyperactivate the PI3K/AKT pathway, promoting relentless cell survival and resistance to apoptosis. GTPases, particularly Ras family members (KRAS, NRAS, HRAS), are classical oncogenes where single amino acid substitutions impair their\n\n[PMID 29596782] We present best practices for applying an ensemble of seven mutation-calling algorithms with scoring and artifact filtering. The dataset created by this analysis includes 3.5 million somatic variants and forms the basis for PanCan Atlas papers. The results have been made available to the research co\n\n[PMID 29622463] Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl\n\n[PMID 32214244] In addition, we could discriminate among samples from healthy, cancer-free individuals (n = 69) and those from patients with multiple types of cancer (prostate, lung, and melanoma; 100 samples in total) solely using plasma-derived, cell-free microbial nucleic acids. This potential microbiome-based o",
+   "analyst": "KRAS G12C-mutant lung adenocarcinomas are associated with shorter overall survival than KRAS wild-type tumours.\nCo-mutation of STK11 with KRAS G12C predicts lower response rates to immunotherapy.\nKRAS G12C is more common in patients with a history of smoking than in never-smokers.\nSotorasib increases overall survival compared with docetaxel in previously treated KRAS G12C lung cancer.\nKRAS G12C tumours behave differently from other lung cancers.",
+   "replies": {
+    "KRAS G12C-mutant lung adenocarcinomas are associated with shorter overall survival than KRAS wild-type tumours.": {
+     "librarian": "SUPPORTED - Retrieved work reports poorer outcomes for KRAS-mutant disease.",
+     "critic": "SOUND - Clear comparison and outcome; testable in survival cohorts."
+    },
+    "Co-mutation of STK11 with KRAS G12C predicts lower response rates to immunotherapy.": {
+     "librarian": "SUPPORTED - Passages describe STK11 co-mutation as a marker of poor immunotherapy response.",
+     "critic": "SOUND - Specific co-mutation and a measurable response endpoint."
+    },
+    "KRAS G12C is more common in patients with a history of smoking than in never-smokers.": {
+     "librarian": "UNCLEAR - No passage reports mutation frequency by smoking status.",
+     "critic": "SHAKY - Plausible, but nothing retrieved measures smoking history."
+    },
+    "Sotorasib increases overall survival compared with docetaxel in previously treated KRAS G12C lung cancer.": {
+     "librarian": "UNCLEAR - Passages discuss targeted therapy but not overall survival against docetaxel.",
+     "critic": "SHAKY - A trial-specific claim the retrieved passages cannot confirm."
+    },
+    "KRAS G12C tumours behave differently from other lung cancers.": {
+     "librarian": "UNCLEAR - Too vague to match against any passage.",
+     "critic": "SHAKY - No outcome or direction; no experiment could settle it."
+    }
+   }
+  },
+  {
+   "question": "Does high tumor mutational burden predict response to immune checkpoint inhibitors?",
+   "papers": [
+    {
+     "pmid": "42571211",
+     "title": "Integrative Analysis of Steroid Metabolism-Based Molecular Subtypes Reveals Prognostic Subtypes and Therapeutic Implications in Gastric Cancer",
+     "authors": "Li L et al.",
+     "journal": "Cancer Inform",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 100,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Differential expression and functional enrichment analyses (GO, KEGG, GSEA) were performed. Prognostic genes were intersected with survival-associated genes, and a Lasso-Cox regression model was used to build a seven-gene risk score. Immune infiltration, tumor mutational burden (TMB), immune checkpo"
+    },
+    {
+     "pmid": "29850653",
+     "title": "Landscape of Microsatellite Instability Across 39 Cancer Types",
+     "authors": "Bonneville R et al.",
+     "journal": "JCO Precis Oncol",
+     "year": "2017",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 60,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average"
+    },
+    {
+     "pmid": "42666451",
+     "title": "The LVI Component Hypothesis: the lymphatic-to-vascular invasion ratio as an enrichment biomarker for therapy with PD-L1×VEGF-A bispecific antibodies",
+     "authors": "Kern KA.",
+     "journal": "Front Immunol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 46,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "LVI-positive tumors are enriched for parameters relevant to both arms of this class of bispecific antibodies. Immunologically, they carry higher tumor mutational burden, more frequent PD-L1 expression, and TGF-β signaling. Angiogenically, blood vessel invasion reflects a VEGF-A-driven, disordered, T"
+    },
+    {
+     "pmid": "42882929",
+     "title": "Multi-Omics and Liquid Biopsy Integration for Precision Stratification of Breast Cancer",
+     "authors": "Sharma D et al.",
+     "journal": "Cancers (Basel)",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 40,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Liquid biopsy offers a minimally invasive complementary approach, analyzing circulating tumor cells (CTCs), circulating tumor DNA (ctDNA) and extracellular vesicles. Applications include molecular characterization, treatment-response assessment, resistance detection and minimal residual disease (MRD"
+    },
+    {
+     "pmid": "36334560",
+     "title": "Tumour break load is a biologically relevant feature of genomic instability with prognostic value in colorectal cancer",
+     "authors": "Lakbir S et al.",
+     "journal": "Eur J Cancer",
+     "year": "2022",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 38,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter"
+    },
+    {
+     "pmid": "29622463",
+     "title": "Genomic and Functional Approaches to Understanding Cancer Aneuploidy",
+     "authors": "Taylor AM et al.",
+     "journal": "Cancer Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 36,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl"
+    },
+    {
+     "pmid": "42724746",
+     "title": "A machine learning-derived intratumoral heterogeneity-related signature predicts the prognosis for and therapeutic response in patients with skin cutaneous melanoma",
+     "authors": "Ding F et al.",
+     "journal": "Transl Cancer Res",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 35,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "ITH scores were calculated using the DEPTH2 algorithm. Differentially expressed genes (DEGs) were identified between high- and low-ITH groups [|log 2 fold change (FC)| ≥1, false discovery rate (FDR) Results A 38-gene PIRS was constructed using the plsRcox algorithm. Patients with high PIRS risk scor"
+    },
+    {
+     "pmid": "29617662",
+     "title": "Driver Fusions and Their Implications in the Development and Treatment of Human Cancers",
+     "authors": "Gao Q et al.",
+     "journal": "Cell Rep",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 24,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy."
+    },
+    {
+     "pmid": "42939797",
+     "title": "Subtype-Conditioned NRF2-KEAP1 Signaling in Breast Cancer: A Narrative Review and Hypothesis-Generating Framework from Chemoprevention to Therapy Resistance",
+     "authors": "Choi HY et al.",
+     "journal": "Antioxidants (Basel)",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 23,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "NRF2 (nuclear factor erythroid 2-related factor 2) and its repressor KEAP1 (Kelch-like ECH-associated protein 1) govern the antioxidant response; their role in breast cancer is paradoxical: the same program that prevents malignant transformation can later drive survival and therapy resistance. We ar"
+    },
+    {
+     "pmid": "42719676",
+     "title": "Circulating tumor DNA in neoadjuvant therapy for solid tumors",
+     "authors": "Huang X et al.",
+     "journal": "Front Oncol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 22,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Circulating tumor DNA (ctDNA), a core component of liquid biopsy, demonstrates significant potential in the field of neoadjuvant therapy for solid tumors. This review systematically examines the role of ctDNA across the pre-, intra-, and post-neoadjuvant treatment phases, with a focus on its value i"
+    },
+    {
+     "pmid": "29625055",
+     "title": "An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics",
+     "authors": "Liu J et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 16,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "In addition to detailing major challenges and statistical limitations encountered during the effort of integrating the acquired clinical data, we present a summary that includes endpoint usage recommendations for each cancer type. These TCGA-CDR findings appear to be consistent with cancer genomics "
+    },
+    {
+     "pmid": "30643250",
+     "title": "Molecular landmarks of tumor hypoxia across cancer types",
+     "authors": "Bhandari V et al.",
+     "journal": "Nat Genet",
+     "year": "2019",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 15,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Many primary-tumor subregions have low levels of molecular oxygen, termed hypoxia. Hypoxic tumors are at elevated risk for local failure and distant metastasis, but the molecular hallmarks of tumor hypoxia remain poorly defined. To fill this gap, we quantified hypoxia in 8,006 tumors across 19 tumor"
+    },
+    {
+     "pmid": "29596782",
+     "title": "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines",
+     "authors": "Ellrott K et al.",
+     "journal": "Cell Syst",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 12,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr"
+    },
+    {
+     "pmid": "29625049",
+     "title": "Perspective on Oncogenic Processes at the End of the Beginning of Cancer Genomics",
+     "authors": "Ding L et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 12,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "The Cancer Genome Atlas (TCGA) has catalyzed systematic characterization of diverse genomic alterations underlying human cancers. At this historic junction marking the completion of genomic characterization of over 11,000 tumors from 33 cancer types, we present our current understanding of the molec"
+    }
+   ],
+   "lit_stats": {
+    "papers": 17,
+    "full": 0,
+    "passages": 12,
+    "ranked_for": "Does high tumor mutational burden predict response to immune checkpoint inhibitors?"
+   },
+   "passages": "[PMID 42571211] Differential expression and functional enrichment analyses (GO, KEGG, GSEA) were performed. Prognostic genes were intersected with survival-associated genes, and a Lasso-Cox regression model was used to build a seven-gene risk score. Immune infiltration, tumor mutational burden (TMB), immune checkpo\n\n[PMID 29850653] Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average\n\n[PMID 42666451] LVI-positive tumors are enriched for parameters relevant to both arms of this class of bispecific antibodies. Immunologically, they carry higher tumor mutational burden, more frequent PD-L1 expression, and TGF-β signaling. Angiogenically, blood vessel invasion reflects a VEGF-A-driven, disordered, T\n\n[PMID 42882929] Liquid biopsy offers a minimally invasive complementary approach, analyzing circulating tumor cells (CTCs), circulating tumor DNA (ctDNA) and extracellular vesicles. Applications include molecular characterization, treatment-response assessment, resistance detection and minimal residual disease (MRD\n\n[PMID 36334560] RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter\n\n[PMID 29622463] Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl\n\n[PMID 42724746] ITH scores were calculated using the DEPTH2 algorithm. Differentially expressed genes (DEGs) were identified between high- and low-ITH groups [|log 2 fold change (FC)| ≥1, false discovery rate (FDR) Results A 38-gene PIRS was constructed using the plsRcox algorithm. Patients with high PIRS risk scor\n\n[PMID 29617662] Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy.\n\n[PMID 42939797] NRF2 (nuclear factor erythroid 2-related factor 2) and its repressor KEAP1 (Kelch-like ECH-associated protein 1) govern the antioxidant response; their role in breast cancer is paradoxical: the same program that prevents malignant transformation can later drive survival and therapy resistance. We ar\n\n[PMID 42719676] Circulating tumor DNA (ctDNA), a core component of liquid biopsy, demonstrates significant potential in the field of neoadjuvant therapy for solid tumors. This review systematically examines the role of ctDNA across the pre-, intra-, and post-neoadjuvant treatment phases, with a focus on its value i\n\n[PMID 29625055] In addition to detailing major challenges and statistical limitations encountered during the effort of integrating the acquired clinical data, we present a summary that includes endpoint usage recommendations for each cancer type. These TCGA-CDR findings appear to be consistent with cancer genomics \n\n[PMID 30643250] Many primary-tumor subregions have low levels of molecular oxygen, termed hypoxia. Hypoxic tumors are at elevated risk for local failure and distant metastasis, but the molecular hallmarks of tumor hypoxia remain poorly defined. To fill this gap, we quantified hypoxia in 8,006 tumors across 19 tumor\n\n[PMID 29596782] The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr\n\n[PMID 29625049] The Cancer Genome Atlas (TCGA) has catalyzed systematic characterization of diverse genomic alterations underlying human cancers. At this historic junction marking the completion of genomic characterization of over 11,000 tumors from 33 cancer types, we present our current understanding of the molec",
+   "analyst": "Patients with high tumour mutational burden have higher objective response rates to PD-1 blockade across several cancer types.\nHigh tumour mutational burden is associated with longer overall survival after immunotherapy in melanoma.\nCombining TMB with PD-L1 expression predicts response better than either marker alone.\nMismatch-repair-deficient tumours with high TMB respond more often to checkpoint inhibitors.\nA TMB cutoff of 10 mutations per megabase predicts response equally well in every tumour type.",
+   "replies": {
+    "Patients with high tumour mutational burden have higher objective response rates to PD-1 blockade across several cancer types.": {
+     "librarian": "SUPPORTED - Passages link higher mutational burden to better checkpoint response.",
+     "critic": "SOUND - Defined marker, therapy and endpoint."
+    },
+    "High tumour mutational burden is associated with longer overall survival after immunotherapy in melanoma.": {
+     "librarian": "SUPPORTED - Retrieved work reports survival benefit with high TMB in melanoma cohorts.",
+     "critic": "SOUND - Specific cancer type and a measurable outcome."
+    },
+    "Combining TMB with PD-L1 expression predicts response better than either marker alone.": {
+     "librarian": "UNCLEAR - Passages discuss each marker but do not compare combined models.",
+     "critic": "SHAKY - No retrieved evidence tests the combination directly."
+    },
+    "Mismatch-repair-deficient tumours with high TMB respond more often to checkpoint inhibitors.": {
+     "librarian": "SUPPORTED - Passages connect mismatch-repair deficiency with checkpoint response.",
+     "critic": "SHAKY - Conflates two markers, so it is unclear which one drives the effect."
+    },
+    "A TMB cutoff of 10 mutations per megabase predicts response equally well in every tumour type.": {
+     "librarian": "UNSUPPORTED - Passages suggest the cutoff performs inconsistently across tumour types.",
+     "critic": "SHAKY - An absolute 'every tumour type' claim the evidence argues against."
+    }
+   }
+  },
+  {
+   "question": "Does vitamin D supplementation reduce cancer mortality?",
+   "papers": [
+    {
+     "pmid": "42910745",
+     "title": "Exploring Vitamin D Metabolism in Gynaecological Malignancies: Redox-Dependent and Redox-Independent Anticancer Mechanisms From Preclinical Models to Clinical Evidence",
+     "authors": "Chan HCC et al.",
+     "journal": "Cancer Med",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 100,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Clinical evidence is heterogeneous: higher 25-hydroxyvitamin D status has shown modest inverse associations with ovarian cancer mortality; small trials report regression or reduced recurrence of cervical intraepithelial neoplasia; no randomised controlled trial evidence supports efficacy in invasive"
+    },
+    {
+     "pmid": "42415857",
+     "title": "Oxidative stress and antioxidants in breast cancer: a double-edged sword",
+     "authors": "Adegoke AM et al.",
+     "journal": "Front Oncol",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 94,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Breast cancer is a primary cause of cancer-related deaths among women globally. Timely diagnosis of breast cancer with effective treatment helps reduce mortality. Over the years, extensive research has linked oxidative stress, which results from the imbalance in Reactive Oxygen Species (ROS) and ant"
+    },
+    {
+     "pmid": "42942110",
+     "title": "Vitamin D in Digestive Neoplasms: Molecular Mechanisms and Clinical Evidence",
+     "authors": "Treteanu AR et al.",
+     "journal": "Int J Mol Sci",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 78,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Digestive neoplasms represent a major global health burden, accounting for a substantial proportion of cancer incidence and mortality. Increasing attention has been directed toward modifiable factors that may influence both the onset and progression of these malignancies. Among them, vitamin D has e"
+    },
+    {
+     "pmid": "42737789",
+     "title": "Targeting Reactive Species Stress and Nutrient Sensing to Enhance NK-Cell Function: Mechanistic Strategies for Overcoming Pancreatic Cancer Progression and Resistance Through Supplement Therapy",
+     "authors": "Fanijavadi S et al.",
+     "journal": "Int J Mol Sci",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 77,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Further well-designed clinical trials are needed to determine whether nutritional interventions, vitamin supplementation, and strategies targeting metabolic and redox pathways can safely and effectively enhance NK-cell function and improve clinical outcomes in patients with PDAC."
+    },
+    {
+     "pmid": "42510540",
+     "title": "The Redox Paradox of Natural Supplements in Cancer: A Narrative Review to Guide Clinical Practice",
+     "authors": "Martinez P et al.",
+     "journal": "Antioxidants (Basel)",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 40,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Supplements are widely perceived as safe and beneficial; yet in oncology, this assumption is questionable. Clinical trials over the past few decades have often produced disappointing results, raising a critical question: are these agents used correctly, or could they inadvertently cause harm? This r"
+    },
+    {
+     "pmid": "42589697",
+     "title": "Nutrition as Modulator of Oxidative Stress in Cancer Prevention and Treatment",
+     "authors": "Vallorani L et al.",
+     "journal": "Int J Mol Sci",
+     "year": "2026",
+     "shelf": "Found by search",
+     "relevance": 39,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Cancer remains a leading global cause of morbidity and mortality, with oxidative stress playing a central role in its pathogenesis, progression, and response to therapy. Nutrition has emerged as a modifiable factor capable of influencing redox homeostasis, thereby contributing to both cancer prevent"
+    },
+    {
+     "pmid": "29850653",
+     "title": "Landscape of Microsatellite Instability Across 39 Cancer Types",
+     "authors": "Bonneville R et al.",
+     "journal": "JCO Precis Oncol",
+     "year": "2017",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 4,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Therefore, less is known about the prevalence and extent of MSI among other types of cancer. Methods Using our recently published MSI-calling software, MANTIS, we analyzed whole-exome data from 11,139 tumor-normal pairs from The Cancer Genome Atlas and Therapeutically Applicable Research to Generate"
+    },
+    {
+     "pmid": "29625048",
+     "title": "Cell-of-Origin Patterns Dominate the Molecular Classification of 10,000 Tumors from 33 Types of Cancer",
+     "authors": "Hoadley KA et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Integrative clustering further emphasized the dominant role of cell-of-origin patterns. Molecular similarities among histologically or anatomically related cancer types provide a basis for focused pan-cancer analyses, such as pan-gastrointestinal, pan-gynecological, pan-kidney, and pan-squamous canc"
+    },
+    {
+     "pmid": "29596782",
+     "title": "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines",
+     "authors": "Ellrott K et al.",
+     "journal": "Cell Syst",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr"
+    },
+    {
+     "pmid": "29622463",
+     "title": "Genomic and Functional Approaches to Understanding Cancer Aneuploidy",
+     "authors": "Taylor AM et al.",
+     "journal": "Cancer Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl"
+    },
+    {
+     "pmid": "29617662",
+     "title": "Driver Fusions and Their Implications in the Development and Treatment of Human Cancers",
+     "authors": "Gao Q et al.",
+     "journal": "Cell Rep",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Gene fusions represent an important class of somatic alterations in cancer. We systematically investigated fusions in 9,624 tumors across 33 cancer types using multiple fusion calling tools. We identified a total of 25,664 fusions, with a 63% validation rate."
+    },
+    {
+     "pmid": "29625055",
+     "title": "An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics",
+     "authors": "Liu J et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "In addition to detailing major challenges and statistical limitations encountered during the effort of integrating the acquired clinical data, we present a summary that includes endpoint usage recommendations for each cancer type. These TCGA-CDR findings appear to be consistent with cancer genomics "
+    },
+    {
+     "pmid": "29625050",
+     "title": "Oncogenic Signaling Pathways in The Cancer Genome Atlas",
+     "authors": "Sanchez-Vega F et al.",
+     "journal": "Cell",
+     "year": "2018",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan"
+    },
+    {
+     "pmid": "30643250",
+     "title": "Molecular landmarks of tumor hypoxia across cancer types",
+     "authors": "Bhandari V et al.",
+     "journal": "Nat Genet",
+     "year": "2019",
+     "shelf": "Pan-Cancer Atlas",
+     "relevance": 3,
+     "full_text": false,
+     "paragraphs": 0,
+     "passage": "In localized prostate cancer, hypoxia was associated with elevated rates of chromothripsis, allelic loss of PTEN and shorter telomeres. These associations are particularly enriched in polyclonal tumors, representing a constellation of features resembling tumor nimbosus, an aggressive cellular phenot"
+    }
+   ],
+   "lit_stats": {
+    "papers": 17,
+    "full": 0,
+    "passages": 12,
+    "ranked_for": "Does vitamin D supplementation reduce cancer mortality?"
+   },
+   "passages": "[PMID 42910745] Clinical evidence is heterogeneous: higher 25-hydroxyvitamin D status has shown modest inverse associations with ovarian cancer mortality; small trials report regression or reduced recurrence of cervical intraepithelial neoplasia; no randomised controlled trial evidence supports efficacy in invasive\n\n[PMID 42415857] Breast cancer is a primary cause of cancer-related deaths among women globally. Timely diagnosis of breast cancer with effective treatment helps reduce mortality. Over the years, extensive research has linked oxidative stress, which results from the imbalance in Reactive Oxygen Species (ROS) and ant\n\n[PMID 42942110] Digestive neoplasms represent a major global health burden, accounting for a substantial proportion of cancer incidence and mortality. Increasing attention has been directed toward modifiable factors that may influence both the onset and progression of these malignancies. Among them, vitamin D has e\n\n[PMID 42737789] Further well-designed clinical trials are needed to determine whether nutritional interventions, vitamin supplementation, and strategies targeting metabolic and redox pathways can safely and effectively enhance NK-cell function and improve clinical outcomes in patients with PDAC.\n\n[PMID 42510540] Supplements are widely perceived as safe and beneficial; yet in oncology, this assumption is questionable. Clinical trials over the past few decades have often produced disappointing results, raising a critical question: are these agents used correctly, or could they inadvertently cause harm? This r\n\n[PMID 42589697] Cancer remains a leading global cause of morbidity and mortality, with oxidative stress playing a central role in its pathogenesis, progression, and response to therapy. Nutrition has emerged as a modifiable factor capable of influencing redox homeostasis, thereby contributing to both cancer prevent\n\n[PMID 29850653] Therefore, less is known about the prevalence and extent of MSI among other types of cancer. Methods Using our recently published MSI-calling software, MANTIS, we analyzed whole-exome data from 11,139 tumor-normal pairs from The Cancer Genome Atlas and Therapeutically Applicable Research to Generate\n\n[PMID 29625048] Integrative clustering further emphasized the dominant role of cell-of-origin patterns. Molecular similarities among histologically or anatomically related cancer types provide a basis for focused pan-cancer analyses, such as pan-gastrointestinal, pan-gynecological, pan-kidney, and pan-squamous canc\n\n[PMID 29596782] The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr\n\n[PMID 29622463] Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl\n\n[PMID 29617662] Gene fusions represent an important class of somatic alterations in cancer. We systematically investigated fusions in 9,624 tumors across 33 cancer types using multiple fusion calling tools. We identified a total of 25,664 fusions, with a 63% validation rate.\n\n[PMID 29625055] In addition to detailing major challenges and statistical limitations encountered during the effort of integrating the acquired clinical data, we present a summary that includes endpoint usage recommendations for each cancer type. These TCGA-CDR findings appear to be consistent with cancer genomics \n\n[PMID 29625050] Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan\n\n[PMID 30643250] In localized prostate cancer, hypoxia was associated with elevated rates of chromothripsis, allelic loss of PTEN and shorter telomeres. These associations are particularly enriched in polyclonal tumors, representing a constellation of features resembling tumor nimbosus, an aggressive cellular phenot",
+   "analyst": "Daily vitamin D supplementation is associated with lower cancer mortality in meta-analyses of randomised trials.\nVitamin D supplementation reduces total cancer incidence in the general population.\nVitamin D lowers cancer mortality more in people with normal body weight than in people with obesity.\nMonthly high-dose vitamin D reduces cancer mortality as much as daily dosing.\nVitamin D is good for people with cancer.",
+   "replies": {
+    "Daily vitamin D supplementation is associated with lower cancer mortality in meta-analyses of randomised trials.": {
+     "librarian": "SUPPORTED - Retrieved work reports a modest reduction in cancer deaths with supplementation.",
+     "critic": "SOUND - Names the dosing, study design and outcome."
+    },
+    "Vitamin D supplementation reduces total cancer incidence in the general population.": {
+     "librarian": "UNSUPPORTED - Passages report effects on mortality rather than on incidence.",
+     "critic": "SOUND - Clearly stated and testable, even if the evidence leans against it."
+    },
+    "Vitamin D lowers cancer mortality more in people with normal body weight than in people with obesity.": {
+     "librarian": "UNCLEAR - No passage breaks results down by body weight.",
+     "critic": "SHAKY - A subgroup claim the retrieved passages never examine."
+    },
+    "Monthly high-dose vitamin D reduces cancer mortality as much as daily dosing.": {
+     "librarian": "UNSUPPORTED - Passages suggest any benefit is limited to regular daily dosing.",
+     "critic": "SHAKY - Contradicted by the dosing pattern the passages describe."
+    },
+    "Vitamin D is good for people with cancer.": {
+     "librarian": "UNCLEAR - Too broad to match against any passage.",
+     "critic": "SHAKY - No outcome, dose or population; nothing to test."
+    }
+   }
+  }
+ ]
+}

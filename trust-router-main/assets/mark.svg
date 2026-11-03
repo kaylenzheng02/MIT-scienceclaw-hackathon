@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="400" height="400">
+  <!-- An organic mark: a central body with branching tendrils and a loose ring of
+       dots. Simple circles and round strokes are melted together by a "goo" filter,
+       into one smooth form. -->
+  <defs>
+    <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
+      <!-- Melt the overlapping shapes into one smooth form. -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/>
+    </filter>
+  </defs>
+  <g fill="#162611" stroke="#162611" stroke-linecap="round" filter="url(#goo)">
+    <!-- body -->
+    <circle cx="50" cy="52" r="12" stroke="none"/>
+    <!-- tendrils -->
+    <path d="M50 52 Q40 42 30 34" stroke-width="6" fill="none"/>
+    <path d="M50 52 Q64 48 72 44 T82 37" stroke-width="5" fill="none"/>
+    <path d="M50 52 Q42 62 35 72" stroke-width="5.5" fill="none"/>
+    <path d="M52 56 Q60 66 63 76 T64 86" stroke-width="4.5" fill="none"/>
+    <path d="M44 46 Q37 47 32 52" stroke-width="3.5" fill="none"/>
+    <!-- knobs at the tips -->
+    <circle cx="29" cy="33" r="4.6" stroke="none"/>
+    <circle cx="83" cy="36" r="3.8" stroke="none"/>
+    <circle cx="34" cy="73" r="4.2" stroke="none"/>
+    <circle cx="64" cy="87" r="3.4" stroke="none"/>
+    <circle cx="31" cy="53" r="2.8" stroke="none"/>
+    <!-- loose ring of dots -->
+    <circle cx="47" cy="13" r="3.2" stroke="none"/>
+    <circle cx="66" cy="18" r="2.6" stroke="none"/>
+    <circle cx="78" cy="24" r="1.9" stroke="none"/>
+    <circle cx="89" cy="55" r="3" stroke="none"/>
+    <circle cx="84" cy="70" r="2.2" stroke="none"/>
+    <circle cx="76" cy="82" r="2.8" stroke="none"/>
+    <circle cx="46" cy="91" r="2.4" stroke="none"/>
+    <circle cx="22" cy="84" r="3" stroke="none"/>
+    <circle cx="13" cy="62" r="2.2" stroke="none"/>
+    <circle cx="14" cy="42" r="3.4" stroke="none"/>
+    <circle cx="22" cy="20" r="2.2" stroke="none"/>
+    <circle cx="60" cy="30" r="2" stroke="none"/>
+  </g>
+</svg>

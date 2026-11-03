@@ -1,5 +1,9 @@
 <!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+// Apply a saved light/dark choice before the page paints, so it never flashes.
+try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 <title>Ask the panel</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter+Tight:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
@@ -16,12 +20,19 @@
   --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root{
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#15140F; --surface:#1D1C17; --raised:#24231D; --ink:#F3F1E8; --muted:#A8A496; --line:#34322A;
   --accent:#FFF5C6; --accent-ink:#15140F; --accent-soft:#2E2A18;
   --go:#4A90D0; --go-soft:#16222F; --warn:#BC8B1C; --warn-soft:#2E2816;
   --stop:#CC3F55; --stop-soft:#33191E; --idle:#5E5B50; color-scheme:dark}}
+:root[data-theme=dark]{
+  --bg:#15140F; --surface:#1D1C17; --raised:#24231D; --ink:#F3F1E8; --muted:#A8A496; --line:#34322A;
+  --accent:#FFF5C6; --accent-ink:#15140F; --accent-soft:#2E2A18;
+  --go:#4A90D0; --go-soft:#16222F; --warn:#BC8B1C; --warn-soft:#2E2816;
+  --stop:#CC3F55; --stop-soft:#33191E; --idle:#5E5B50; color-scheme:dark}
+:root[data-theme=light]{color-scheme:light}
 *{box-sizing:border-box}
+[hidden]{display:none!important}   /* so styled elements like .budget can still be hidden */
 body{margin:0;padding:26px 18px 60px;background:var(--bg);color:var(--ink);
 font:15px/1.55 var(--body)}
 .wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
@@ -169,80 +180,147 @@ footer{padding-top:8px;border-top:1px solid var(--line)}
 .vpill{flex:none;display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;
   font-size:.78rem;font-weight:500;border:1px solid;color:var(--ink);white-space:nowrap}
 .vpill i{font-style:normal;font-weight:700}
-.vpill.t-ACT_ON{background:var(--go-soft);border-color:var(--go)} .vpill.t-ACT_ON i{color:var(--go)}
-.vpill.t-CHECK{background:var(--warn-soft);border-color:var(--warn)} .vpill.t-CHECK i{color:var(--warn)}
-.vpill.t-SET_ASIDE{background:var(--stop-soft);border-color:var(--stop)} .vpill.t-SET_ASIDE i{color:var(--stop)}
+.vpill.t-ACT_ON{background:var(--go-soft);border-color:var(--ink)} .vpill.t-ACT_ON i{color:var(--go)}
+.vpill.t-CHECK{background:var(--warn-soft);border-color:var(--ink)} .vpill.t-CHECK i{color:var(--warn)}
+.vpill.t-SET_ASIDE{background:var(--stop-soft);border-color:var(--ink)} .vpill.t-SET_ASIDE i{color:var(--stop)}
 .vpill.pend{border-style:dashed;border-color:var(--idle);color:var(--muted)}
 
-/* The checks and the papers: lists of rows, each one opens in the inspector. */
-.glist{display:flex;flex-direction:column;gap:12px}
-.glist button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;font:inherit;color:var(--ink);
-  transition:background .15s}
-.glist button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
-.glist button[disabled]{cursor:default;opacity:.55}
-.glist button:hover:not([disabled]){background:var(--raised)}
-.glist .gn.sel{background:var(--raised);box-shadow:inset 3px 0 0 var(--ink)}
-.gcard,.gpapers,.gbox{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
-.ghead{align-items:flex-start;gap:12px;padding:14px 16px;width:100%}
+/* The checks and the papers: one line per item, opened in place.
+   Rows are buttons, so undo the page's pill-button look first (this outranks the
+   bare `button` rule); the layout rules below use two classes to outrank this. */
+.glist button{background:none;color:var(--ink);border:0;border-radius:0;padding:0;margin:0;
+  font:inherit;text-align:left;cursor:pointer;opacity:1}
+.glist button:hover:not(:disabled){opacity:1}
+.glist button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.acc-list{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.acc + .acc{border-top:1px solid var(--line)}
+.glist .acc-head{display:flex;align-items:center;gap:14px;width:100%;padding:12px 16px;transition:background .15s}
+.glist .acc-head:hover{background:var(--raised)}
+.glist .acc.open > .acc-head{background:var(--raised)}
+.acc-title{flex:1;min-width:0;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc.open .acc-title{white-space:normal;font-weight:500}
+.acc-dots{display:flex;gap:5px;flex:none}
+.acc-meta{flex:none;color:var(--muted);font-size:.8rem;white-space:nowrap;max-width:200px;
+  overflow:hidden;text-overflow:ellipsis}
+.chev{flex:none;color:var(--muted);transition:transform .2s;font-size:.8rem}
+.acc.open .chev{transform:rotate(90deg)}
+.acc-body{padding:4px 16px 14px 56px;background:var(--raised);animation:open .2s ease-out}
+@keyframes open{from{opacity:0;transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.acc-body{animation:none}.chev{transition:none}}
+.crow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:baseline;
+  padding:9px 0;border-top:1px solid var(--line);font-size:.86rem}
+.crow:first-child{border-top:0}
+.crow-name{display:flex;align-items:center;gap:8px;font-weight:500}
+.crow-name em{font-style:normal;font-weight:400;color:var(--muted);font-size:.8rem}
+.crow-why{color:var(--ink);line-height:1.5}
+.crow-who{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap}
+.crow.rule .crow-why{color:var(--muted)}
+.crow.rule .crow-why b{color:var(--ink);font-weight:500}
+@media(max-width:700px){
+  .crow{grid-template-columns:1fr;gap:4px}
+  .acc-body{padding-left:16px}
+  .acc-dots,.acc-meta{display:none}}
+.vdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none;display:inline-block}
 .gnum{flex:none;width:26px;height:26px;border-radius:50%;border:1.3px solid var(--ink);
   display:grid;place-items:center;font-size:12.5px;font-weight:700}
-.gn.sel .gnum{background:var(--ink);color:var(--bg)}
-.gclaim{flex:1;font-size:.95rem;line-height:1.45;display:flex;flex-direction:column;gap:4px;padding-top:2px}
-.gchecks{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-@media(max-width:700px){.gchecks{grid-template-columns:1fr}}
-.gcheck{flex-direction:column;gap:6px;padding:12px 16px;border-right:1px solid var(--line)}
-.gcheck:last-child{border-right:0}
-.gck-top{display:flex;align-items:center;gap:8px;font-size:.86rem}
-.gvote{margin-left:auto;color:var(--muted);font-size:.78rem}
-.vdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
-.gwhy{font-size:.82rem;color:var(--muted);line-height:1.45}
+.acc.open .gnum{background:var(--ink);color:var(--bg)}
 .gwho{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.02em}
-.grule{gap:10px;align-items:baseline;flex-wrap:wrap;width:100%;padding:10px 16px;
-  border-top:1px solid var(--line);font-size:.84rem}
-.grule .gwho{margin-left:auto}
-.gpaper{align-items:center;gap:16px;padding:12px 16px;border-top:1px solid var(--line);width:100%}
-.gpaper:first-child{border-top:0}
+.acc-summary{font-size:.84rem;color:var(--muted);margin:0 0 10px}
 .grel{flex:none;width:100px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px}
 .grel b{font-weight:500;width:34px;text-align:right}
 .grel-bar{flex:1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
 .grel-bar i{display:block;height:100%;background:var(--ink)}
-.gp-main{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}
-.gp-title{font-size:.9rem;line-height:1.4}
+.ptext{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ptext .acc-title{font-weight:400}
+.pmeta{font-size:.78rem;color:var(--muted)}
+.pmeta b{font-weight:500;color:var(--ink)}
+.paper-body{padding-left:16px;padding-top:10px}
+.paper-body blockquote{margin:6px 0 10px;padding-left:12px;border-left:2px solid var(--ink);
+  font-size:.88rem;line-height:1.55}
+.paper-body a{font-size:.84rem;color:var(--ink)}
+.paper-body .gwho{margin:0 0 8px}
+@media(max-width:700px){.paper-body{padding-left:16px}}
 
-/* Progress tracker inside the question card, with the raw log folded away. */
-.stages{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-@media(max-width:640px){.stages{grid-template-columns:1fr 1fr}}
-.stg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);
-  border-radius:6px;background:var(--surface);min-width:0}
-.stg-dot{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
-  font-size:11.5px;font-weight:700;border:1.3px solid var(--idle);color:var(--muted)}
-.stg-txt{display:flex;flex-direction:column;min-width:0;font-size:.84rem;line-height:1.3}
-.stg-txt span{color:var(--muted);font-size:.76rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.stg.done .stg-dot{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.stg.now{border-color:var(--ink)}
-.stg.now .stg-dot{border-color:var(--ink);border-top-color:transparent;animation:spin .9s linear infinite}
-.stg.fail .stg-dot{animation:none;border-color:var(--stop)}
-.stg.wait{opacity:.6}
+/* The question card stays quiet: progress is one line, the log is folded away. */
+textarea[readonly]{background:var(--raised);cursor:default}
+.demo-note{margin:10px 0 0;font-size:.82rem;color:var(--muted);padding:8px 12px;border-radius:4px;background:var(--accent-soft)}
+.examples{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.82rem;color:var(--muted)}
+.examples select{flex:1;max-width:520px;min-width:0;font:inherit;font-size:.86rem;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:7px 10px;cursor:pointer}
+.examples select:hover{border-color:var(--muted)}
+.examples select:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.row{margin-top:14px}
+.budget{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.budget input{width:60px;padding:5px 8px}
+.demo-badge{margin-left:10px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);
+  color:var(--ink);font-size:10.5px;letter-spacing:.08em;cursor:help;vertical-align:1px}
+.trk{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;
+  gap:6px 0;font-size:.86rem}
+.trk li{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.trk li + li::before{content:"";width:28px;height:1px;background:var(--line);margin:0 10px}
+.trk li.done,.trk li.now{color:var(--ink)}
+.trk-dot{width:16px;height:16px;border-radius:50%;border:1.3px solid var(--idle);display:grid;
+  place-items:center;font-size:9.5px;font-weight:700;flex:none}
+.trk li.done .trk-dot{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.trk li.now .trk-dot{border-color:var(--ink);border-top-color:transparent;animation:spin .9s linear infinite}
+.trk.failed li.now .trk-dot{animation:none;border-color:var(--stop)}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.stg.now .stg-dot{animation:none}}
-.stg-now{margin:8px 2px 0;font-size:.8rem;color:var(--muted);font-family:var(--mono)}
+@media (prefers-reduced-motion:reduce){.trk li.now .trk-dot{animation:none}}
+.trk-dim{color:var(--muted)}
+.trk-now{margin:8px 0 0;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+.trk-done{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:16px 0 0;font-size:.88rem}
+.trk-done b{font-weight:500}
+.trk-ok{width:18px;height:18px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;
+  place-items:center;font-size:10px;font-weight:700}
+.trk-t{display:inline-flex;align-items:center;gap:5px}
+.trk-t i{font-style:normal;font-weight:700}
+.trk-t.t-ACT_ON i{color:var(--go)} .trk-t.t-CHECK i{color:var(--warn)} .trk-t.t-SET_ASIDE i{color:var(--stop)}
 .logbox{margin-top:12px}
-.logbox summary{cursor:pointer;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:14px;
-  list-style:none}
+.logbox summary{cursor:pointer;font-size:.8rem;color:var(--muted);display:inline-flex;align-items:center;
+  gap:8px;list-style:none}
 .logbox summary::-webkit-details-marker{display:none}
 .logbox summary::before{content:"\25B8";transition:transform .15s}
 .logbox[open] summary::before{transform:rotate(90deg)}
-.logbox summary .stat{margin:0 0 0 auto;font-size:.8rem}
-.logbox .steps{margin-top:8px}
+.logbox .stat{margin:10px 0 8px;font-size:.8rem}
 .steps div.now{color:var(--ink)}
 
-/* Flow: the steps that ran once, as a strip above the rows. */
-.fstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-size:.84rem}
-.fstage{border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--surface);color:var(--muted)}
+/* Findings: tier headings above each group of rows. */
+.fgroup{display:flex;align-items:baseline;gap:10px;margin:22px 0 8px;font-family:var(--body);
+  font-size:.95rem;font-weight:500;letter-spacing:0}
+.fgroup:first-child{margin-top:10px}
+.fgroup i{font-style:normal;font-weight:700}
+.fgroup span{font-size:.8rem;font-weight:400;color:var(--muted)}
+.i-ACT_ON{color:var(--go)} .i-CHECK{color:var(--warn)} .i-SET_ASIDE{color:var(--stop)}
+
+/* Flow: the steps that ran once as a strip, then a table that always fits. */
+.fstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-size:.82rem}
+.fstage{border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface);color:var(--muted)}
 .fstage b{color:var(--ink);font-weight:500;margin-right:7px}
 .fstage.run{border-color:var(--ink)}
 .fstage.pend{border-style:dashed}
 .farr{color:var(--muted)}
+.ftable{display:block;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.glist .frow{display:grid;grid-template-columns:26px minmax(0,1fr) 64px 64px 64px 52px 132px;
+  align-items:center;gap:12px;width:100%;padding:11px 16px;border-top:1px solid var(--line)}
+.ftable .frow:first-child{border-top:0}
+.glist button.frow{transition:background .15s}
+.glist button.frow:hover{background:var(--raised)}
+.glist .fhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);padding-top:9px;padding-bottom:9px;background:var(--raised)}
+.fhead span{cursor:default}
+.fclaim{font-size:.9rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fcell{display:flex;justify-content:center}
+.fscore{font-family:var(--mono);font-size:.82rem;text-align:center}
+.fverdict{display:flex;justify-content:flex-end}
+@media(max-width:760px){
+  .glist .frow{grid-template-columns:26px minmax(0,1fr) 22px 22px 22px 112px;gap:8px}
+  .fscore{display:none}
+  .fhead .fcell{font-size:0}
+  .fhead .fcell::after{font-size:10.5px}
+  .fhead .fcell:nth-of-type(3)::after{content:"P"}
+  .fhead .fcell:nth-of-type(4)::after{content:"R"}
+  .fhead .fcell:nth-of-type(5)::after{content:"T"}}
+
 
 /* Arriving from the landing page: a cross-fade where the browser supports it,
    then the page's blocks ease in one after another. */
@@ -260,7 +338,27 @@ footer{padding-top:8px;border-top:1px solid var(--line)}
 .lit{animation-delay:.2s}
 @media (prefers-reduced-motion:reduce){
   ::view-transition-old(root),::view-transition-new(root),.col > *,.lit{animation:none}}
+
+/* Light/dark toggle, pinned bottom-right (same control as the landing page). The
+   two-class selectors outrank the page's general black-pill button style. */
+button.theme-btn{position:fixed;right:20px;bottom:20px;z-index:20;display:grid;place-items:center;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);color:var(--ink);cursor:pointer;padding:0;
+  background:color-mix(in srgb,var(--surface) 75%,transparent);-webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(0,0,0,.08);transition:border-color .15s}
+button.theme-btn:hover:not(:disabled){opacity:1;border-color:var(--muted)}
+button.theme-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .moon,:root[data-theme=dark] .theme-btn .sun{display:block}
+.theme-btn .sun,:root[data-theme=dark] .theme-btn .moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .theme-btn .sun{display:block}
+  :root:not([data-theme=light]) .theme-btn .moon{display:none}}
 </style></head><body>
+<button class="theme-btn" id="themebtn" type="button" aria-label="Switch between light and dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
 <div class="wrap">
 <div class="col">
   <header>
@@ -272,21 +370,22 @@ footer{padding-top:8px;border-top:1px solid var(--line)}
   </header>
 
   <section>
-    <p class="label">Your research question</p>
+    <p class="label">Your research question<span class="demo-badge" id="demob" hidden
+      title="Demo mode replays a saved sample run with no API calls. The papers are real; the findings and verdicts are examples.">DEMO</span></p>
     <textarea id="q" placeholder="e.g. Does higher ESR1 expression predict better survival in ER-positive breast cancer?"></textarea>
-    <div class="chips" id="chips"></div>
+    <label class="examples"><span id="exlabel">Try an example</span>
+      <select id="ex" aria-label="Example questions"></select></label>
     <div class="row">
       <button id="go">Run the panel</button>
-      <label>Budget $<input type="number" id="budget" value="2" min="0.5" max="20" step="0.5"></label>
-      <span class="sub" id="status" style="margin:0">Idle.</span>
+      <label class="budget" id="budgetwrap">Max spend $<input type="number" id="budget" value="2" min="0.5" max="20" step="0.5"></label>
     </div>
     <p class="err" id="err"></p>
+    <p class="demo-note" id="dnote" hidden></p>
     <!-- Progress lives with the question, so you never scroll away to check it. -->
     <div class="tracker" id="tracker" aria-live="polite"></div>
     <details class="logbox">
-      <summary>Full activity log
-        <span class="stat"><span>Calls <b id="calls">0</b></span><span>Spent $<b id="spend">0.00</b></span></span>
-      </summary>
+      <summary>Activity log</summary>
+      <div class="stat"><span>Calls <b id="calls">0</b></span><span>Spent $<b id="spend">0.00</b></span></div>
       <div class="steps" id="steps"><div>Nothing running.</div></div>
     </details>
   </section>
@@ -314,23 +413,47 @@ footer{padding-top:8px;border-top:1px solid var(--line)}
 </div>
 
 <script>
-const EXAMPLES = [
-  "Does higher ESR1 expression predict better survival in ER-positive breast cancer?",
-  "Which molecular properties best predict protein-ligand binding affinity?",
-  "Do TP53 mutation rates differ by genetic ancestry in breast cancer?",
-  "What limits the accuracy of AI agents on bioinformatics analysis tasks?"
-];
 const $ = id => document.getElementById(id);
 const LABEL = {ACT_ON:"Act on it", CHECK:"Check first", SET_ASIDE:"Set aside"};
 const TONE = {ACT_ON:"var(--go)", CHECK:"var(--warn)", SET_ASIDE:"var(--stop)"};
 const SOFT = {ACT_ON:"var(--go-soft)", CHECK:"var(--warn-soft)", SET_ASIDE:"var(--stop-soft)"};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-$("chips").innerHTML = EXAMPLES.map(e =>
-  `<span class="chip">${esc(e.length > 58 ? e.slice(0,56)+"…" : e)}</span>`).join("");
-[...$("chips").children].forEach((c,i) => c.onclick = () => { $("q").value = EXAMPLES[i]; });
+// Example questions, grouped by topic. Specific questions ("does X predict Y
+// in Z") give the checks something concrete to agree or disagree about.
+const EXAMPLES = {
+  "Cancer genomics": [
+    "Does higher ESR1 expression predict better survival in ER-positive breast cancer?",
+    "Do TP53 mutation rates differ by genetic ancestry in breast cancer?",
+    "Is KRAS G12C mutation associated with worse survival in lung adenocarcinoma?",
+    "Does high tumor mutational burden predict response to immune checkpoint inhibitors?",
+    "Are BRCA1 and BRCA2 mutations more common in triple-negative breast cancer?",
+    "Does MGMT promoter methylation predict temozolomide response in glioblastoma?",
+    "Is microsatellite instability more common in right-sided than left-sided colorectal cancer?",
+    "Do IDH1 mutations predict better survival in glioma?",
+  ],
+  "Broader biomedical": [
+    "Does metformin use lower cancer incidence in people with type 2 diabetes?",
+    "Is the gut microbiome associated with response to immunotherapy?",
+    "Does APOE4 increase Alzheimer's risk more in women than in men?",
+    "Which molecular properties best predict protein-ligand binding affinity?",
+  ],
+  "Contested (expect mixed verdicts)": [
+    "Does vitamin D supplementation reduce cancer mortality?",
+    "Can AlphaFold-predicted structures be trusted for drug docking?",
+    "What limits the accuracy of AI agents on bioinformatics analysis tasks?",
+  ],
+};
+$("ex").innerHTML = '<option value="">Choose a question…</option>' +
+  Object.entries(EXAMPLES).map(([group, qs]) => `<optgroup label="${esc(group)}">${
+    qs.map(q => `<option>${esc(q)}</option>`).join("")}</optgroup>`).join("");
+$("ex").onchange = () => {
+  if ($("ex").value) { $("q").value = $("ex").value; $("q").focus(); }
+  $("ex").value = "";   // back to the prompt, so the same question can be picked again
+};
 
 let view = "graph", LAST = null, PICKED = null, LEVEL = 0, PICK_F = null;
+let OPEN = "f0";   // the one finding or paper opened in place, if any
 $("tabs").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   view = b.dataset.v;
@@ -367,7 +490,7 @@ function pillSVG(x, y, tier, sel){
     stroke="var(--idle)" stroke-dasharray="4 4"/><text x="${x}" y="${y+4.5}" text-anchor="middle"
     font-size="13" fill="var(--muted)">…</text>`;
   return `<rect x="${l}" y="${y-16}" width="${w}" height="32" rx="16" fill="${SOFT[tier]}"
-      stroke="${sel ? "var(--ink)" : TONE[tier]}" stroke-width="${sel ? 2.2 : 1.2}"/>
+      stroke="var(--ink)" stroke-width="${sel ? 2.2 : 1.1}"/>
     <text x="${l+17}" y="${y+4.5}" font-size="13" font-weight="700" fill="${TONE[tier]}"
       pointer-events="none">${ICON[tier]}</text>
     <text x="${l+33}" y="${y+4.5}" font-size="13" font-weight="500" fill="var(--ink)"
@@ -377,86 +500,56 @@ const pillHTML = tier => tier
   ? `<span class="vpill t-${tier}"><i>${ICON[tier]}</i>${LABEL[tier]}</span>`
   : `<span class="vpill pend">…</span>`;
 
-// Flow: the run as a pipeline. One row per finding, read left to right: what
-// it claims, each check by name and how it voted, the router's sum, and the
-// tier. The steps that ran once for every finding sit in a strip above.
+// Flow: the run as a compact table that always fits its panel. One row per
+// finding: what it claims, one dot per check (named once, in the header), the
+// router's score, and the tier. Click a row to open its checks.
 function mapView(s){
   const t = s.trace || {shared: [], lanes: []};
   if (!t.shared.length && !t.lanes.length)
     return '<p class="sub">Ask a question to begin.</p>';
   const by = Object.fromEntries(t.shared.map(n => [n.key, n]));
   const lanes = t.lanes || [];
-  const ROW = 70, PAD = 40, W = 1120;
-  const H = Math.max(120, PAD + lanes.length * ROW + 8);
-  const X = {num:20, claim:44, chip:440, chipW:106, gap:10, route:822, routeW:126, verdict:1050};
 
-  const stage = (n, name) => n
-    ? `<span class="fstage${n.state === "running" ? " run" : ""}"><b>${esc(name)}</b>${
-        esc(n.detail || n.label)}</span>`
-    : `<span class="fstage pend"><b>${esc(name)}</b>waiting</span>`;
-  const strip = `<div class="fstrip">
-      <span class="fstage"><b>Question</b>${esc(trunc(s.question, 64))}</span>
-      <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.papers, "Librarian")}
-      <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.propose, "Analyst")}</div>`;
+  const stage = (n, name) => `<span class="fstage${!n ? " pend" : n.state === "running" ? " run" : ""}"><b>${
+    name}</b>${esc(n ? (n.detail || n.label).replace(/, each checked separately below/, "") : "waiting")}</span>`;
+  const strip = `<div class="fstrip">${stage(by.papers, "Librarian")}
+    <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.propose, "Analyst")}
+    <span class="farr" aria-hidden="true">&rarr;</span><span class="fstage${
+      lanes.some(l => !l.tier) ? " run" : ""}"><b>Router</b>${
+      lanes.filter(l => l.tier).length} of ${lanes.length} sorted</span></div>`;
 
-  let svg = lanes.length ? `<g font-family="var(--mono)" font-size="10.5" letter-spacing="1.2"
-      fill="var(--muted)"><text x="${X.claim}" y="${PAD - 14}">FINDING</text>
-      <text x="${X.chip}" y="${PAD - 14}">CHECKS</text>
-      <text x="${X.route}" y="${PAD - 14}">ROUTER</text>
-      <text x="${X.verdict}" y="${PAD - 14}" text-anchor="middle">VERDICT</text></g>` : "";
-
-  lanes.forEach((ln, i) => {
-    const y = PAD + i * ROW + ROW / 2;
+  const cell = (st, name) => {
+    const voted = st && st.vote != null && st.state !== "running", v = voted ? st.vote : undefined;
+    return `<span class="fcell"><i class="vdot" title="${esc(name)}: ${VOTE_W(v)}" style="background:${
+      voted ? VOTE_C(v) : "transparent"};border-color:${voted ? VOTE_C(v) : "var(--idle)"}${
+      st ? "" : ";border-style:dashed"}"></i></span>`;
+  };
+  const rows = lanes.map((ln, i) => {
     const st = Object.fromEntries((ln.steps || []).map(x => [x.key, x]));
-    if (i % 2 === 0) svg += `<rect x="4" y="${y - ROW/2 + 4}" width="${W - 8}" height="${ROW - 8}"
-      rx="6" fill="var(--raised)" opacity=".7"/>`;
-
-    const [a, b] = wrap2(ln.claim || "Waiting for the analyst…", 52);
-    svg += `<g><title>${esc(ln.claim || "")}</title>
-      <circle cx="${X.num}" cy="${y}" r="12" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
-      <text x="${X.num}" y="${y + 4.5}" text-anchor="middle" font-size="12.5" font-weight="700"
-        fill="var(--ink)">${i + 1}</text>
-      <text x="${X.claim}" y="${y - (b ? 3 : -5)}" font-size="13.5" fill="var(--ink)">${esc(a)}${
-        b ? `<tspan x="${X.claim}" dy="18">${esc(b)}</tspan>` : ""}</text></g>`;
-
-    CHECKS.forEach(([k, name], j) => {
-      const n = st[k], x = X.chip + j * (X.chipW + X.gap);
-      const voted = n && n.vote != null && n.state !== "running";
-      svg += `<g${n && n.state === "running" ? ' opacity=".5"' : ""}>
-        <title>${esc(name)}: ${VOTE_W(voted ? n.vote : undefined)}</title>
-        <rect x="${x}" y="${y - 14}" width="${X.chipW}" height="28" rx="14" fill="var(--surface)"
-          stroke="${voted ? VOTE_C(n.vote) : "var(--idle)"}" stroke-width="1.2"
-          ${n ? "" : 'stroke-dasharray="4 4"'}/>
-        <circle cx="${x + 15}" cy="${y}" r="4.5" fill="${voted ? VOTE_C(n.vote) : "none"}"
-          stroke="${voted ? "none" : "var(--idle)"}"/>
-        <text x="${x + 27}" y="${y + 4.5}" font-size="12" fill="var(--ink)">${esc(name)}</text></g>`;
-    });
-
-    const chipsEnd = X.chip + 3 * X.chipW + 2 * X.gap;
-    const rt = st.route;
-    svg += curve(chipsEnd + 4, y, X.route - 4, y, !rt);
-    svg += `<rect x="${X.route}" y="${y - 14}" width="${X.routeW}" height="28" rx="6"
-        fill="var(--surface)" stroke="var(--line)"/>
-      <text x="${X.route + X.routeW/2}" y="${y + 4.5}" text-anchor="middle" font-size="12"
-        font-family="var(--mono)" fill="${rt ? "var(--ink)" : "var(--muted)"}">${
-        rt ? esc(rt.detail.replace(/ from \d+ checks,/, " ·")) : "…"}</text>`;
-    svg += curve(X.route + X.routeW + 4, y, X.verdict - 68, y, !ln.tier);
-    svg += pillSVG(X.verdict, y, ln.tier, false);
-  });
+    const score = st.route ? (st.route.detail.match(/^[+-]?\d+/) || [""])[0] : "";
+    return `<button class="frow" data-goto="f${i}" title="${esc(ln.claim || "")}">
+      <span class="gnum">${i + 1}</span>
+      <span class="fclaim">${esc(ln.claim || "Waiting for the analyst…")}</span>
+      ${CHECKS.map(([k, name]) => cell(st[k], name)).join("")}
+      <span class="fscore">${esc(score || "…")}</span>
+      <span class="fverdict">${pillHTML(ln.tier)}</span></button>`;
+  }).join("");
 
   return `<h2>How each finding was reached</h2>
-    <p class="sub" style="margin-bottom:10px">Each row is one finding, read left to right: the
-      three checks and how each voted, the router's sum, and the tier it landed in. Only the
-      router and the measurable check are plain code; the rest are models.</p>
+    <p class="sub" style="margin-bottom:12px">Three checks per finding; plain code adds them up.
+      Click a row to read its checks.</p>
     ${strip}
-    ${lanes.length ? `<div class="map" id="gwrap"><svg viewBox="0 0 ${W} ${H}" role="img"
-      style="min-width:900px;width:100%;height:auto"
-      aria-label="Each finding, its three checks, the router's sum and its tier">${svg}</svg></div>
-    <div class="key"><div class="krow"><b>Checks</b>
+    ${lanes.length ? `<div class="ftable glist" role="table" aria-label="Each finding, its checks, score and tier">
+      <div class="frow fhead" role="row" aria-hidden="true"><span></span><span>Finding</span>
+        <span class="fcell" title="Does published work support it?">Papers</span>
+        <span class="fcell" title="Does the reviewer find it sound?">Review</span>
+        <span class="fcell" title="Does it state something you could measure?">Testable</span>
+        <span class="fscore">Score</span><span class="fverdict">Verdict</span></div>
+      ${rows}</div>
+    <div class="key"><div class="krow"><b>Dots</b>
       <span><i class="dot" style="background:var(--go)"></i>supports</span>
       <span><i class="dot" style="background:var(--stop)"></i>raises a doubt</span>
-      <span><i class="dot" style="background:var(--idle)"></i>unclear</span>
-      <span>dashed = not run yet</span></div></div>` : ""}`;
+      <span><i class="dot" style="background:var(--idle)"></i>unclear</span></div></div>` : ""}`;
 }
 
 // Papers grouped by where they came from, each with how well it matched.
@@ -636,9 +729,6 @@ function graphFrame(N, W, H, inner, legend, html){
     aria-pressed="${l.id === LEVEL}">${l.name}</button>`).join("");
   const deeper = LEVEL < 2
     ? `<button class="godeep" data-l="${LEVEL+1}">Go deeper: ${LEVELS[LEVEL+1].name} &rarr;</button>` : "";
-  const back = LEVEL > 0 ? `<button class="crumb" data-l="${LEVEL-1}">&larr; Back</button>` : "";
-  const only = LEVEL === 1 && PICK_F
-    ? `<button class="crumb" id="allf">Show every finding</button>` : "";
   const tip = ["Click any row to see why it landed there, or go deeper to see each check.",
                "Click any check to read its full reasoning.",
                "Click any paper to read the passage the librarian matched."][LEVEL];
@@ -651,9 +741,9 @@ function graphFrame(N, W, H, inner, legend, html){
     <h2>${esc(LEVELS[LEVEL].name)}</h2>
     <p class="sub" style="margin-bottom:12px">${esc(LEVELS[LEVEL].hint)} ${tip}</p>
     ${body}
-    <div class="navbar">${back}${only}${deeper}</div>
+    ${deeper ? `<div class="navbar">${deeper}</div>` : ""}
     ${legend}
-    <div id="inspect">${inspect(N)}</div>`;
+    ${N ? `<div id="inspect">${inspect(N)}</div>` : ""}`;
 }
 
 const VOTE_KEY = `<div class="key"><div class="krow"><b>Checks</b>
@@ -771,66 +861,86 @@ function runView(s){
   return graphFrame(N, W, H, heads + bands + back + front, legend);
 }
 
-// "The checks": one card per finding (or only the one you picked), with each
-// check's vote and its reason in words, and the router's sum underneath.
-function checksView(s){
-  const {N} = buildGraph(s, 1, PICK_F);
-  const lanes = (s.trace && s.trace.lanes) || [];
-  if (!lanes.length) return graphFrame(N, 0, 0,
-    '<p class="sub">The checks appear once the analyst has proposed findings.</p>', "", true);
-  const chosen = /^f(\d+)$/.test(PICK_F || "") ? [+PICK_F.slice(1)] : lanes.map((_, i) => i);
-  const sel = id => PICKED === id ? " sel" : "";
+// The model's reply starts with its verdict word; the row already says that.
+const reason = c => String(c ? (c.why || c.detail || "") : "")
+  .replace(/^(SUPPORTED|UNSUPPORTED|UNCLEAR|SOUND|SHAKY)\s*[-–—:]\s*/i, "");
 
-  const cards = chosen.map(i => {
-    const ln = lanes[i]; if (!ln) return "";
-    const f = "f" + i, st = Object.fromEntries((ln.steps || []).map(x => [x.key, x]));
-    const checks = CHECKS.map(([k, name]) => {
-      const c = st[k], voted = c && c.vote != null && c.state !== "running";
-      const v = voted ? c.vote : undefined;
-      return `<button class="gcheck gn${sel(f + "_" + k)}" data-id="${f}_${k}"${c ? "" : " disabled"}>
-        <span class="gck-top"><i class="vdot" style="background:${voted ? VOTE_C(v) : "transparent"};
-          border-color:${voted ? VOTE_C(v) : "var(--idle)"}"></i><b>${name}</b>
-          <span class="gvote">${VOTE_W(v)}</span></span>
-        <span class="gwhy">${esc(trunc(c ? (c.why || c.detail) : "Waiting…", 160))}</span>
-        <span class="gwho">${esc(c ? c.agent : "")}</span></button>`;
-    }).join("");
-    const rt = st.route;
-    return `<div class="gcard">
-      <button class="ghead gn${sel(f)}" data-id="${f}"><span class="gnum">${i + 1}</span>
-        <span class="gclaim">${esc(ln.claim || "…")}</span>${pillHTML(ln.tier)}</button>
-      <div class="gchecks">${checks}</div>
-      <button class="grule gn${sel(f + "_r")}" data-id="${f}_r"><b>Router</b>
-        <span>${esc(rt ? rt.detail : "waiting for the checks")}${
-          ln.tier ? ` &rarr; ${LABEL[ln.tier]}` : ""}</span>
-        <span class="gwho">plain code, no model</span></button>
-    </div>`;
+// One finding as an expandable row: number, claim, three check dots, tier.
+// Open it to see each check's vote and reason, and the router's sum.
+function findingRow(ln, i){
+  const f = "f" + i, open = OPEN === f;
+  const st = Object.fromEntries((ln.steps || []).map(x => [x.key, x]));
+  const voted = c => c && c.vote != null && c.state !== "running";
+  const dots = CHECKS.map(([k, name]) => {
+    const c = st[k], v = voted(c) ? c.vote : undefined;
+    return `<i class="vdot" title="${esc(name)}: ${VOTE_W(v)}" style="background:${
+      v !== undefined ? VOTE_C(v) : "transparent"};border-color:${v !== undefined ? VOTE_C(v) : "var(--idle)"}"></i>`;
   }).join("");
-  return graphFrame(N, 0, 0, cards, VOTE_KEY, true);
+  const detail = open ? `<div class="acc-body" id="${f}-body">
+      ${CHECKS.map(([k, name]) => {
+        const c = st[k], v = voted(c) ? c.vote : undefined;
+        return `<div class="crow">
+          <span class="crow-name"><i class="vdot" style="background:${v !== undefined ? VOTE_C(v) : "transparent"};
+            border-color:${v !== undefined ? VOTE_C(v) : "var(--idle)"}"></i>${name}
+            <em>${VOTE_W(v)}</em></span>
+          <span class="crow-why">${esc(c ? reason(c) : "Not run yet.")}</span>
+          <span class="crow-who">${esc(c ? c.agent.replace(/^\w+ · /, "") : "")}</span></div>`;
+      }).join("")}
+      <div class="crow rule"><span class="crow-name">Router</span>
+        <span class="crow-why">${esc(st.route ? st.route.detail : "Waiting for the checks.")}${
+          ln.tier ? ` &rarr; <b>${LABEL[ln.tier]}</b>` : ""}</span>
+        <span class="crow-who">plain code</span></div>
+    </div>` : "";
+  return `<div class="acc${open ? " open" : ""}">
+    <button class="acc-head" data-open="${f}" aria-expanded="${open}" aria-controls="${f}-body">
+      <span class="gnum">${i + 1}</span>
+      <span class="acc-title">${esc(ln.claim || "…")}</span>
+      <span class="acc-dots">${dots}</span>${pillHTML(ln.tier)}
+      <span class="chev" aria-hidden="true">▸</span></button>${detail}</div>`;
 }
 
-// "The papers": every paper the librarian read, best match first, each with
-// how well it matched and whether the full text was read.
+// "The checks": one line per finding. Open one and its three checks appear
+// right underneath, one per line, with the router's sum at the bottom.
+function checksView(s){
+  const lanes = (s.trace && s.trace.lanes) || [];
+  if (!lanes.length) return graphFrame(null, 0, 0,
+    '<p class="sub">The checks appear once the analyst has proposed findings.</p>', "", true);
+
+  const rows = lanes.map(findingRow).join("");
+  const key = `<div class="key"><div class="krow"><b>Dots</b>
+    <span>literature, reviewer, measurable</span>
+    <span><i class="dot" style="background:var(--go)"></i>supports</span>
+    <span><i class="dot" style="background:var(--stop)"></i>raises a doubt</span>
+    <span><i class="dot" style="background:var(--idle)"></i>unclear</span></div></div>`;
+  return graphFrame(null, 0, 0, `<div class="acc-list">${rows}</div>`, key, true);
+}
+
+// "The papers": one line per paper, best match first. Open one to read the
+// passage the librarian matched, with a link to the paper.
 function papersView(s){
-  const {N} = buildGraph(s, 2, null);
   const ps = (s.papers || []).slice(0, 12), st = s.lit_stats || {};
-  const sel = id => PICKED === id ? " sel" : "";
-  if (!ps.length) return graphFrame(N, 0, 0,
+  if (!ps.length) return graphFrame(null, 0, 0,
     '<p class="sub">Papers appear once the librarian has searched.</p>', "", true);
-  const head = `<button class="ghead gbox gn${sel("lib")}" data-id="lib"><span class="gnum">L</span>
-    <span class="gclaim">Searched for: ${esc(st.ranked_for || s.question || "")}
-      <span class="gwho">${st.papers || ps.length} papers · ${st.full || 0} read in full ·
-        ${st.passages || 0} strong passages</span></span></button>`;
-  const rows = ps.map((p, i) => `<button class="gpaper gn${sel("p" + i)}" data-id="p${i}">
-      <span class="grel" title="How well it matched the question"><span class="grel-bar">
-        <i style="width:${Math.max(3, p.relevance)}%"></i></span><b>${p.relevance}%</b></span>
-      <span class="gp-main"><span class="gp-title">${esc(p.title)}</span>
-        <span class="gwho">${esc([p.journal, p.year].filter(Boolean).join(" · "))}${
-          p.pmid ? " · PMID " + esc(p.pmid) : ""}</span></span>
-      <span class="tag${p.full_text ? " on" : ""}">${p.full_text ? "full text" : "abstract"}</span>
-    </button>`).join("");
-  const legend = `<div class="key"><div class="krow"><b>Match</b>
-    <span>bar = how well the paper's best passage matched your question</span></div></div>`;
-  return graphFrame(N, 0, 0, head + `<div class="gpapers">${rows}</div>`, legend, true);
+  const summary = `<p class="acc-summary">${st.papers || ps.length} papers found &middot;
+    ${st.full || 0} read in full &middot; ${st.passages || 0} strong passages &middot;
+    best match first</p>`;
+  const rows = ps.map((p, i) => {
+    const id = "p" + i, open = OPEN === id;
+    const meta = [p.journal, p.year].filter(Boolean).join(" · ");
+    return `<div class="acc${open ? " open" : ""}">
+      <button class="acc-head" data-open="${id}" aria-expanded="${open}" aria-controls="${id}-body">
+        <span class="ptext"><span class="acc-title">${esc(p.title)}</span>
+          <span class="pmeta">${esc(meta)}${meta ? " · " : ""}<b>${p.relevance}% match</b></span></span>
+        <span class="chev" aria-hidden="true">▸</span></button>
+      ${open ? `<div class="acc-body paper-body" id="${id}-body">
+        ${p.passage ? `<blockquote>${esc(p.passage)}</blockquote>` : '<p class="sub">No matching passage.</p>'}
+        <p class="gwho">${esc(p.authors || "")}${p.full_text
+          ? ` · full text read (${p.paragraphs} paragraphs)` : " · abstract only"}</p>
+        ${p.pmid ? `<a href="https://pubmed.ncbi.nlm.nih.gov/${encodeURIComponent(p.pmid)}/"
+          target="_blank" rel="noopener">Open on PubMed (PMID ${esc(p.pmid)}) ↗</a>` : ""}
+      </div>` : ""}</div>`;
+  }).join("");
+  return graphFrame(null, 0, 0, summary + `<div class="acc-list">${rows}</div>`, "", true);
 }
 
 function inspect(N){
@@ -872,13 +982,15 @@ function render(){
   }
   if (view === "graph") {
     const go = l => { LEVEL = Math.max(0, Math.min(2, l)); PICKED = null;
+      // Going deeper from a picked finding opens that finding's checks.
+      OPEN = LEVEL === 1 ? (PICK_F || "f0") : LEVEL === 2 ? "p0" : OPEN;
       if (LEVEL !== 1) PICK_F = null; render(); };
     document.querySelectorAll(".step,.godeep,.crumb[data-l]").forEach(b =>
       b.onclick = () => go(+b.dataset.l));
-    const allf = $("allf");
-    if (allf) allf.onclick = () => { PICK_F = null; PICKED = null; render(); };
     const svg = $("gsvg");
     if (svg) svg.addEventListener("click", e => {
+      const o = e.target.closest("[data-open]");
+      if (o) { OPEN = OPEN === o.dataset.open ? null : o.dataset.open; render(); return; }
       const g = e.target.closest(".gn"); if (!g) return;
       const id = g.dataset.id;
       PICKED = PICKED === id ? null : id;
@@ -886,79 +998,125 @@ function render(){
       render();
     });
   }
+  if (view === "map") {
+    // A row in Flow opens that finding's checks in the Graph tab.
+    const tbl = document.querySelector(".ftable");
+    if (tbl) tbl.addEventListener("click", e => {
+      const r = e.target.closest("[data-goto]"); if (!r) return;
+      view = "graph"; LEVEL = 1; PICKED = null; PICK_F = OPEN = r.dataset.goto;
+      [...$("tabs").children].forEach(x => x.setAttribute("aria-pressed", String(x.dataset.v === "graph")));
+      render();
+      $("view").scrollIntoView({behavior: "smooth", block: "start"});
+    });
+  }
   if (view === "list") {
-    const f = $("filters");
-    if (f) f.addEventListener("click", e => {
-      const b = e.target.closest("button"); if (!b) return;
-      filter = b.dataset.f; render();
+    const fl = $("flist");
+    if (fl) fl.addEventListener("click", e => {
+      const o = e.target.closest("[data-open]"); if (!o) return;
+      OPEN = OPEN === o.dataset.open ? null : o.dataset.open; render();
     });
   }
 }
 
+// Findings: the same rows as "The checks", grouped by tier with the most
+// trusted first, so the answer to "what can I act on?" is at the top.
 function listView(s){
-  if (!s.claims.length) return '<p class="sub">Ask a question to begin.</p>';
-  return `<h2>Findings, sorted by what you can act on</h2>` + [...s.claims]
-    .sort((a,b) => b.trust - a.trust).map(c => `
-      <div class="claim ${c.tier}">
-        <div class="ch"><div>${esc(c.text)}</div>
-          ${pillHTML(c.tier)}</div>
-        ${c.votes.map(v => `<div class="v">
-          <span class="m ${v.v>0?'up':v.v<0?'down':'flat'}">${v.v>0?'+':v.v<0?'−':'·'}</span>
-          <span><b>${esc(v.n)}</b><br><span class="d">${esc(v.d)}</span></span></div>`).join("")}
-      </div>`).join("");
+  const lanes = (s.trace && s.trace.lanes) || [];
+  if (!lanes.length) return '<p class="sub">Ask a question to begin.</p>';
+  const groups = [["ACT_ON", "the checks agree"], ["CHECK", "something is off; look before relying on it"],
+                  ["SET_ASIDE", "too much doubt to use"], [null, "still being checked"]];
+  const body = groups.map(([tier, note]) => {
+    const members = lanes.map((ln, i) => [ln, i]).filter(([ln]) => (ln.tier || null) === tier)
+      .sort((a, b) => (b[0].trust || 0) - (a[0].trust || 0));
+    if (!members.length) return "";
+    return `<h3 class="fgroup">${tier ? `<i class="i-${tier}">${ICON[tier]}</i>${LABEL[tier]}`
+        : "Pending"}<span>${members.length} &middot; ${note}</span></h3>
+      <div class="acc-list">${members.map(([ln, i]) => findingRow(ln, i)).join("")}</div>`;
+  }).join("");
+  return `<h2>Findings, sorted by what you can act on</h2>
+    <p class="sub" style="margin-bottom:6px">Click a finding to see why it landed in its tier.</p>
+    <div class="glist" id="flist">${body}</div>`;
 }
+
+// Demo mode can only replay saved runs, so offer exactly those questions and
+// lock the box: everything a visitor can pick will actually work.
+let DEMO_READY = false;
+function demoMode(questions){
+  DEMO_READY = true;
+  $("exlabel").textContent = "Demo question";
+  $("ex").innerHTML = '<option value="">Choose one of ' + questions.length + ' saved runs…</option>'
+    + questions.map(q => `<option>${esc(q)}</option>`).join("");
+  $("q").readOnly = true;
+  $("q").placeholder = "Choose a demo question below.";
+  if (!$("q").value) $("q").value = questions[0] || "";
+}
+
+// The question a run actually used, so the box is filled once per run rather
+// than on every poll (which used to undo whatever you had just picked).
+let SYNCED_Q = "";
 
 $("go").onclick = async () => {
   $("err").textContent = "";
+  // Demo mode replays saved runs only; nudge towards one rather than failing.
+  const saved = LAST && LAST.demo ? LAST.demo_questions || [] : null;
+  if (saved && !saved.includes($("q").value.trim())) {
+    $("dnote").hidden = false;
+    $("dnote").textContent = "Pick one of the demo questions from the list to see a full run.";
+    return;
+  }
+  $("dnote").hidden = true;
   const r = await fetch("/api/run", {method:"POST", headers:{"Content-Type":"application/json"},
     body: JSON.stringify({question: $("q").value, budget: +$("budget").value})});
   const b = await r.json();
   if (b.error) $("err").textContent = b.error;
 };
 
-// Four stages in one row, filled in as the run moves, with the latest step
-// underneath. Replaces scrolling a log to find out where things are.
+// Progress on one thin line. While running: four stages with the current one
+// spinning and only its own note shown. Once finished: a single summary line.
 function tracker(s){
   if (s.status === "idle" && !s.steps.length) return "";
   const t = s.trace || {shared:[], lanes:[]};
   const by = Object.fromEntries(t.shared.map(n => [n.key, n]));
   const lanes = t.lanes || [], routed = lanes.filter(l => l.tier).length;
-  const ended = s.status === "done", failed = s.status === "error";
-  const st = n => !n ? "wait" : n.state === "running" ? "now" : n.state === "skipped" ? "skip" : "done";
+  const count = k => (s.claims || []).filter(c => c.tier === k).length;
+
+  if (s.status === "done") {
+    const papers = by.papers && by.papers.state === "done"
+      ? (by.papers.detail || "").split(",")[0] : "no papers";
+    return `<p class="trk-done"><span class="trk-ok" aria-hidden="true">✓</span><b>Done</b>
+      <span class="trk-dim">${esc(papers)} · ${lanes.length} findings</span>
+      <span class="trk-dim" aria-hidden="true">→</span>
+      ${["ACT_ON", "CHECK", "SET_ASIDE"].map(k => `<span class="trk-t t-${k}"><i>${ICON[k]}</i>${
+        count(k)} ${LABEL[k].toLowerCase()}</span>`).join("")}</p>`;
+  }
+
+  const failed = s.status === "error";
+  const st = n => !n ? "wait" : n.state === "running" ? "now" : "done";
   const checks = !by.propose || by.propose.state !== "done" ? "wait"
     : routed === lanes.length && lanes.length ? "done" : "now";
-  const count = k => (s.claims || []).filter(c => c.tier === k).length;
-  const stages = [
-    ["Papers", st(by.papers), by.papers && by.papers.state !== "running" ? by.papers.detail : ""],
-    ["Findings", st(by.propose), by.propose && by.propose.state === "done" ? `${lanes.length} proposed` : ""],
-    ["Checks", checks, lanes.length ? `${routed} of ${lanes.length} checked` : ""],
-    ["Sorted", ended ? "done" : "wait", ended ? ["ACT_ON","CHECK","SET_ASIDE"]
-      .map(k => `${count(k)} ${ICON[k]}`).join(" · ") : ""],
-  ];
-  const mark = {done:"✓", now:"", wait:"", skip:"–"};
-  const now = failed ? "Stopped." : ended ? "" : (s.steps[s.steps.length - 1] || {}).t || "";
-  return `<ol class="stages">${stages.map(([name, state, note], i) => `
-      <li class="stg ${state}${failed && state === "now" ? " fail" : ""}">
-        <span class="stg-dot">${state === "now" ? "" : mark[state] || i + 1}</span>
-        <span class="stg-txt"><b>${name}</b><span>${esc(note || (state === "now" ? "working…" : ""))}</span></span>
-      </li>`).join("")}</ol>
-    ${now ? `<p class="stg-now">${esc(now)}</p>` : ""}`;
+  const stages = [["Papers", st(by.papers)], ["Findings", st(by.propose)],
+    ["Checks", checks, `${routed}/${lanes.length}`], ["Sorted", "wait"]];
+  const latest = (s.steps[s.steps.length - 1] || {}).t || "";
+  return `<ol class="trk${failed ? " failed" : ""}">${stages.map(([name, state, note]) => `
+      <li class="${state}"><span class="trk-dot" aria-hidden="true">${state === "done" ? "✓" : ""}</span>
+        ${name}${state === "now" && note ? ` <span class="trk-dim">${note}</span>` : ""}</li>`).join("")}</ol>
+    ${latest && !failed ? `<p class="trk-now">${esc(latest)}</p>` : ""}`;
 }
 
 async function poll(){
   try {
     const s = await (await fetch("/api/state")).json();
-    $("status").textContent = {idle:"Idle.", running:"Running…", done:"Finished.",
-      error:"Stopped."}[s.status] || s.status;
-    $("go").disabled = s.status === "running";
+    const running = s.status === "running";
+    $("go").disabled = running;
+    $("go").textContent = running ? "Running…" : "Run the panel";
+    // Examples only help before the first run; budget means nothing in demo mode.
+    $("demob").hidden = !s.demo;
+    $("budgetwrap").hidden = !!s.demo;
     $("calls").textContent = s.calls;
     $("spend").textContent = s.spend.toFixed(2);
     $("err").textContent = s.error || "";
-    if (s.demo) {
-      $("status").textContent += " Demo: a saved sample run, no API calls."
-        + " Papers are real; findings and verdicts are examples.";
-      if (s.question) $("q").value = s.question;
-    }
+    if (s.question && s.question !== SYNCED_Q) { $("q").value = s.question; SYNCED_Q = s.question; }
+    if (s.demo && !DEMO_READY) demoMode(s.demo_questions || []);
 
     // The server writes "starting X" lines and never revisits them, so a line
     // counts as finished once anything came after it, or the run ended well.
@@ -989,4 +1147,14 @@ async function poll(){
   } catch (e) { /* server restarting; next tick will catch up */ }
 }
 poll(); setInterval(poll, 1500);
+
+// Light/dark toggle: flips whichever theme is showing and remembers it, shared
+// with the landing page.
+document.getElementById("themebtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
 </script></body></html>
