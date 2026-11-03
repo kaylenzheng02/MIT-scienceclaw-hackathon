@@ -4,8 +4,8 @@
 
 AI agents doing science are right somewhere between a third and two thirds of the
 time, and they sound equally sure either way. Trust router has three independent
-agents propose, source and challenge findings for your research question. Plain
-code (not a model) then sorts each finding into a tier:
+agents propose, source and challenge findings for your research question. Then
+**Jev**, the router (plain code, not a model), sorts each finding into a tier:
 
 - ✓ **Act on it**: the checks agree
 - ! **Check first**: something is off, so look before relying on it

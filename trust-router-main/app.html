@@ -515,7 +515,7 @@ function mapView(s){
   const strip = `<div class="fstrip">${stage(by.papers, "Librarian")}
     <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.propose, "Analyst")}
     <span class="farr" aria-hidden="true">&rarr;</span><span class="fstage${
-      lanes.some(l => !l.tier) ? " run" : ""}"><b>Router</b>${
+      lanes.some(l => !l.tier) ? " run" : ""}"><b>Jev router</b>${
       lanes.filter(l => l.tier).length} of ${lanes.length} sorted</span></div>`;
 
   const cell = (st, name) => {
@@ -536,7 +536,7 @@ function mapView(s){
   }).join("");
 
   return `<h2>How each finding was reached</h2>
-    <p class="sub" style="margin-bottom:12px">Three checks per finding; plain code adds them up.
+    <p class="sub" style="margin-bottom:12px">Three checks per finding; Jev, the plain-code router, adds them up.
       Click a row to read its checks.</p>
     ${strip}
     ${lanes.length ? `<div class="ftable glist" role="table" aria-label="Each finding, its checks, score and tier">
@@ -589,7 +589,7 @@ const KIND = {
   check:     {c:"var(--muted)", label:"Check"},
   paper:     {c:"var(--idle)",  label:"Abstract only"},
   paperfull: {c:"var(--ink)",   label:"Full text read"},
-  router:    {c:"var(--muted)", label:"Router"},
+  router:    {c:"var(--muted)", label:"Jev router"},
   ACT_ON:    {c:"var(--go)",    label:"Act on it"},
   CHECK:     {c:"var(--warn)",  label:"Check first"},
   SET_ASIDE: {c:"var(--stop)",  label:"Set aside"},
@@ -886,7 +886,7 @@ function findingRow(ln, i){
           <span class="crow-why">${esc(c ? reason(c) : "Not run yet.")}</span>
           <span class="crow-who">${esc(c ? c.agent.replace(/^\w+ · /, "") : "")}</span></div>`;
       }).join("")}
-      <div class="crow rule"><span class="crow-name">Router</span>
+      <div class="crow rule"><span class="crow-name">Jev router</span>
         <span class="crow-why">${esc(st.route ? st.route.detail : "Waiting for the checks.")}${
           ln.tier ? ` &rarr; <b>${LABEL[ln.tier]}</b>` : ""}</span>
         <span class="crow-who">plain code</span></div>
