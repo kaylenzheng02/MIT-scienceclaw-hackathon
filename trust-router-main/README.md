@@ -46,6 +46,8 @@ live app now runs its three agents on Sonnet, Haiku and Opus for that reason.
 | File | What it does |
 | --- | --- |
 | `app.py`, `app.html` | Ask a question, watch three agents work, get sorted findings. Reuses Quorum's literature code for real papers and PDFs |
+| `landing.html` | The landing page served at `/`; the app itself is at `/app` |
+| `demo_runs.json` | Four saved runs that `python app.py --demo` replays, with no API key. Papers are real; findings are hand-written examples |
 | `serve.py` | Live view of the architecture during a benchmark run |
 | `router.py` | The router scored on BixBench's shipped results. Free, no API calls |
 | `pipeline.py` | Four agents answering the benchmark live, with a hard dollar cap |
@@ -60,8 +62,14 @@ live app now runs its three agents on Sonnet, Haiku and Opus for that reason.
 
 ## Running it
 
+Step-by-step setup for the app, including Windows commands, the free demo,
+paper search and troubleshooting, is in the [main README](../README.md).
+
 ```bash
-# The live app: ask a question, get sorted findings
+# The app, free demo with saved runs (no API key)
+python3 app.py --demo                            # http://localhost:8800
+
+# The app, live: ask any question, get sorted findings
 ANTHROPIC_API_KEY=sk-ant-... python3 app.py      # http://localhost:8800
 
 # The free result, no API calls

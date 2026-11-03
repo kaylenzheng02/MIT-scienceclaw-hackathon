@@ -170,7 +170,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0
 @keyframes page-in{from{opacity:0;transform:translateY(16px)}}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
 
-footer{border-top:1px solid var(--line);padding:36px 0 56px;font-size:.88rem;color:var(--muted)}
+/* Bottom padding keeps the footer text clear of the fixed corner buttons. */
+footer{border-top:1px solid var(--line);padding:36px 0 120px;font-size:.88rem;color:var(--muted);line-height:1.6}
+.foot-left{display:flex;flex-direction:column;gap:4px}
+footer a{white-space:nowrap}   /* names like SHAFF622/trust-router never split */
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--ink)}
@@ -394,8 +397,11 @@ footer a:hover{color:var(--ink)}
 
 <footer>
   <div class="w foot">
-    <span>Trust router &middot; started at the
-      <a href="https://scienceclawhack.ai/">ScienceClaw Hackathon</a>, MIT Media Lab, 2026</span>
+    <div class="foot-left">
+      <span>Trust router &middot; started at the
+        <a href="https://scienceclawhack.ai/">ScienceClaw Hackathon</a>, MIT Media Lab, 2026</span>
+      <span>Original project: <a href="https://github.com/SHAFF622/trust-router">SHAFF622/trust-router</a></span>
+    </div>
     <span>Built on <a href="https://arxiv.org/abs/2503.00096">BixBench</a>,
       <a href="https://arxiv.org/abs/2511.02824">Kosmos</a> and
       <a href="https://github.com/SHAFF622/quorum">Quorum</a></span>
