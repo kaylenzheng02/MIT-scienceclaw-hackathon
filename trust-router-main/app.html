@@ -1,24 +1,26 @@
 <!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ask the panel</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter+Tight:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* Warm editorial palette: off-white paper, black ink, a pale cream highlight. */
 :root{
-  --bg:#EEF1F6; --surface:#FFFFFF; --raised:#F7F8FB; --ink:#111B30; --muted:#5B6678; --line:#DCE2EB;
-  --accent:#2C47D6; --accent-ink:#FFFFFF; --accent-soft:#E7EBFD;
-  --go:#14804C; --go-soft:#DDF2E6; --warn:#946200; --warn-soft:#FCF1CF;
-  --stop:#C5332A; --stop-soft:#FBE2DF; --idle:#A0AABA;
-  --shadow:0 1px 2px rgba(17,27,48,.06),0 8px 24px rgba(17,27,48,.06);
-  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
-  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --bg:#FAF9F3; --surface:#FFFFFF; --raised:#F2F1EB; --ink:#111111; --muted:#6B6A63; --line:#EBEAE6;
+  --accent:#111111; --accent-ink:#FFFFFF; --accent-soft:#FFF5C6;
+  /* Tier colours, checked for colour-blind separation and contrast (dataviz validator). */
+  --go:#1D6FA0; --go-soft:#E4EEF6; --warn:#C08A0E; --warn-soft:#FBF0D2;
+  --stop:#D04A35; --stop-soft:#FBE6E1; --idle:#B5B3AA;
+  --shadow:none;
+  --display:"Newsreader",Georgia,serif;
+  --body:"Inter Tight","Segoe UI",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#0B111C; --surface:#141C2B; --raised:#1A2335; --ink:#E9EDF5; --muted:#9AA5B7; --line:#273146;
-  --accent:#8EA0FF; --accent-ink:#0B111C; --accent-soft:#1D2646;
-  --go:#4CC48B; --go-soft:#10291D; --warn:#F0C43C; --warn-soft:#2C240F;
-  --stop:#F26A60; --stop-soft:#311715; --idle:#5C677A; --shadow:none; color-scheme:dark}}
+  --bg:#15140F; --surface:#1D1C17; --raised:#24231D; --ink:#F3F1E8; --muted:#A8A496; --line:#34322A;
+  --accent:#FFF5C6; --accent-ink:#15140F; --accent-soft:#2E2A18;
+  --go:#4A90D0; --go-soft:#16222F; --warn:#BC8B1C; --warn-soft:#2E2816;
+  --stop:#CC3F55; --stop-soft:#33191E; --idle:#5E5B50; color-scheme:dark}}
 *{box-sizing:border-box}
 body{margin:0;padding:26px 18px 60px;background:var(--bg);color:var(--ink);
 font:15px/1.55 var(--body)}
@@ -50,7 +52,7 @@ border-radius:999px;padding:6px 13px;font-size:.81rem;cursor:pointer}
 .steps{font-family:var(--mono);font-size:.78rem;max-height:170px;overflow:auto;
 background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .steps div{color:var(--muted);padding:1px 0}
-.steps div.done{color:var(--go)}
+.steps div.done{color:var(--muted)}
 .err{color:var(--stop);font-size:.85rem;margin:9px 0 0}
 
 /* Literature panel, same shape as Quorum's */
@@ -127,15 +129,146 @@ border-bottom:1px solid var(--line);font-size:.86rem}
 .wrow .d{color:var(--muted)}
 footer{color:var(--muted);font-size:.78rem}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- Editorial restyle: flat paper, thin rules, serif headlines, pill buttons ---- */
+body{padding:44px 24px 80px;font-size:15.5px}
+.wrap{gap:24px}
+header{padding:8px 0 18px}
+section{border-radius:4px;padding:22px 24px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,4.5vw,3.2rem);
+  line-height:1.04;letter-spacing:-.025em;margin-top:6px}
+.sub{max-width:60ch}
+header .sub{font-size:1.05rem;margin-top:16px}
+h2{font-family:var(--display);font-weight:500;font-size:1.4rem;letter-spacing:-.01em}
+.label{color:var(--muted);letter-spacing:.14em}
+button{border-radius:999px;font-family:var(--body);font-weight:500;padding:11px 24px}
+button:hover:not(:disabled){opacity:.85}
+textarea,input[type=number]{border-radius:4px;background:var(--surface)}
+textarea{font-size:1rem;padding:14px 16px}
+.chip{border-radius:999px;background:var(--surface)}
+.chip:hover{background:var(--accent-soft);border-color:var(--line);color:var(--ink)}
+.claim,.paper,.inspector,#gwrap,.steps{border-radius:4px}
+.claim{border-left-width:1px;background:var(--surface)}
+.claim.ACT_ON{background:var(--go-soft);border-color:var(--line)}
+.pill{font-family:var(--body);letter-spacing:0;text-transform:none;font-size:.76rem;font-weight:500}
+.tabs{border-radius:999px;background:var(--surface)}
+.tabs button{border-radius:999px;font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.82rem}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.step{border-radius:999px;background:var(--surface)}
+.step[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.godeep{border-radius:999px;background:var(--accent-soft);color:var(--ink);border-color:var(--line)}
+.crumb{color:var(--ink)}
+.paper .rel i{background:var(--ink)}
+.tag.on{color:var(--ink);border-color:var(--line);background:var(--accent-soft)}
+.ihead{font-family:var(--display)}
+.wk{color:var(--muted)}
+footer{padding-top:8px;border-top:1px solid var(--line)}
+#gwrap{background:var(--surface)}
+
+/* Tier pills: the colour sits on the edge and the icon; the words stay in ink. */
+.vpill{flex:none;display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;
+  font-size:.78rem;font-weight:500;border:1px solid;color:var(--ink);white-space:nowrap}
+.vpill i{font-style:normal;font-weight:700}
+.vpill.t-ACT_ON{background:var(--go-soft);border-color:var(--go)} .vpill.t-ACT_ON i{color:var(--go)}
+.vpill.t-CHECK{background:var(--warn-soft);border-color:var(--warn)} .vpill.t-CHECK i{color:var(--warn)}
+.vpill.t-SET_ASIDE{background:var(--stop-soft);border-color:var(--stop)} .vpill.t-SET_ASIDE i{color:var(--stop)}
+.vpill.pend{border-style:dashed;border-color:var(--idle);color:var(--muted)}
+
+/* The checks and the papers: lists of rows, each one opens in the inspector. */
+.glist{display:flex;flex-direction:column;gap:12px}
+.glist button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;font:inherit;color:var(--ink);
+  transition:background .15s}
+.glist button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.glist button[disabled]{cursor:default;opacity:.55}
+.glist button:hover:not([disabled]){background:var(--raised)}
+.glist .gn.sel{background:var(--raised);box-shadow:inset 3px 0 0 var(--ink)}
+.gcard,.gpapers,.gbox{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.ghead{align-items:flex-start;gap:12px;padding:14px 16px;width:100%}
+.gnum{flex:none;width:26px;height:26px;border-radius:50%;border:1.3px solid var(--ink);
+  display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.gn.sel .gnum{background:var(--ink);color:var(--bg)}
+.gclaim{flex:1;font-size:.95rem;line-height:1.45;display:flex;flex-direction:column;gap:4px;padding-top:2px}
+.gchecks{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media(max-width:700px){.gchecks{grid-template-columns:1fr}}
+.gcheck{flex-direction:column;gap:6px;padding:12px 16px;border-right:1px solid var(--line)}
+.gcheck:last-child{border-right:0}
+.gck-top{display:flex;align-items:center;gap:8px;font-size:.86rem}
+.gvote{margin-left:auto;color:var(--muted);font-size:.78rem}
+.vdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
+.gwhy{font-size:.82rem;color:var(--muted);line-height:1.45}
+.gwho{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+.grule{gap:10px;align-items:baseline;flex-wrap:wrap;width:100%;padding:10px 16px;
+  border-top:1px solid var(--line);font-size:.84rem}
+.grule .gwho{margin-left:auto}
+.gpaper{align-items:center;gap:16px;padding:12px 16px;border-top:1px solid var(--line);width:100%}
+.gpaper:first-child{border-top:0}
+.grel{flex:none;width:100px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px}
+.grel b{font-weight:500;width:34px;text-align:right}
+.grel-bar{flex:1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.grel-bar i{display:block;height:100%;background:var(--ink)}
+.gp-main{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}
+.gp-title{font-size:.9rem;line-height:1.4}
+
+/* Progress tracker inside the question card, with the raw log folded away. */
+.stages{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:640px){.stages{grid-template-columns:1fr 1fr}}
+.stg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);
+  border-radius:6px;background:var(--surface);min-width:0}
+.stg-dot{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-size:11.5px;font-weight:700;border:1.3px solid var(--idle);color:var(--muted)}
+.stg-txt{display:flex;flex-direction:column;min-width:0;font-size:.84rem;line-height:1.3}
+.stg-txt span{color:var(--muted);font-size:.76rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stg.done .stg-dot{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.stg.now{border-color:var(--ink)}
+.stg.now .stg-dot{border-color:var(--ink);border-top-color:transparent;animation:spin .9s linear infinite}
+.stg.fail .stg-dot{animation:none;border-color:var(--stop)}
+.stg.wait{opacity:.6}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.stg.now .stg-dot{animation:none}}
+.stg-now{margin:8px 2px 0;font-size:.8rem;color:var(--muted);font-family:var(--mono)}
+.logbox{margin-top:12px}
+.logbox summary{cursor:pointer;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:14px;
+  list-style:none}
+.logbox summary::-webkit-details-marker{display:none}
+.logbox summary::before{content:"\25B8";transition:transform .15s}
+.logbox[open] summary::before{transform:rotate(90deg)}
+.logbox summary .stat{margin:0 0 0 auto;font-size:.8rem}
+.logbox .steps{margin-top:8px}
+.steps div.now{color:var(--ink)}
+
+/* Flow: the steps that ran once, as a strip above the rows. */
+.fstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-size:.84rem}
+.fstage{border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--surface);color:var(--muted)}
+.fstage b{color:var(--ink);font-weight:500;margin-right:7px}
+.fstage.run{border-color:var(--ink)}
+.fstage.pend{border-style:dashed}
+.farr{color:var(--muted)}
+
+/* Arriving from the landing page: a cross-fade where the browser supports it,
+   then the page's blocks ease in one after another. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.35s cubic-bezier(.4,0,.2,1) both page-out}
+::view-transition-new(root){animation:.5s cubic-bezier(.2,.7,.2,1) both page-in}
+@keyframes page-out{to{opacity:0;transform:translateY(-12px)}}
+@keyframes page-in{from{opacity:0;transform:translateY(16px)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+.col > *, .lit{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.col > :nth-child(2){animation-delay:.08s}
+.col > :nth-child(3){animation-delay:.16s}
+.col > :nth-child(4){animation-delay:.24s}
+.col > :nth-child(5){animation-delay:.32s}
+.lit{animation-delay:.2s}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root),.col > *,.lit{animation:none}}
 </style></head><body>
 <div class="wrap">
 <div class="col">
   <header>
-    <p class="label">Trust router</p>
-    <h1>Ask the panel</h1>
+    <p class="label"><a href="/" style="color:inherit;text-decoration:none">&larr; Trust router</a></p>
+    <h1>Know which answers<br>to act on.</h1>
     <p class="sub">An analyst proposes findings, a librarian checks them against published
-      papers, and a reviewer judges whether the evidence holds. Plain code decides what you
-      can act on. No model assigns a verdict.</p>
+      papers, and a reviewer judges whether the evidence holds. Plain code, not a model,
+      decides what you can trust.</p>
   </header>
 
   <section>
@@ -147,12 +280,16 @@ footer{color:var(--muted);font-size:.78rem}
       <label>Budget $<input type="number" id="budget" value="2" min="0.5" max="20" step="0.5"></label>
       <span class="sub" id="status" style="margin:0">Idle.</span>
     </div>
-    <div class="stat"><span>Calls <b id="calls">0</b></span><span>Spent $<b id="spend">0.00</b></span></div>
     <p class="err" id="err"></p>
+    <!-- Progress lives with the question, so you never scroll away to check it. -->
+    <div class="tracker" id="tracker" aria-live="polite"></div>
+    <details class="logbox">
+      <summary>Full activity log
+        <span class="stat"><span>Calls <b id="calls">0</b></span><span>Spent $<b id="spend">0.00</b></span></span>
+      </summary>
+      <div class="steps" id="steps"><div>Nothing running.</div></div>
+    </details>
   </section>
-
-  <section><h2>What the agents are doing</h2>
-    <div class="steps" id="steps"><div>Nothing running.</div></div></section>
 
   <section>
     <div class="tabs" id="tabs">
@@ -186,7 +323,7 @@ const EXAMPLES = [
 const $ = id => document.getElementById(id);
 const LABEL = {ACT_ON:"Act on it", CHECK:"Check first", SET_ASIDE:"Set aside"};
 const TONE = {ACT_ON:"var(--go)", CHECK:"var(--warn)", SET_ASIDE:"var(--stop)"};
-const SOFT = {ACT_ON:"#14301f", CHECK:"#33270f", SET_ASIDE:"#331818"};
+const SOFT = {ACT_ON:"var(--go-soft)", CHECK:"var(--warn-soft)", SET_ASIDE:"var(--stop-soft)"};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 $("chips").innerHTML = EXAMPLES.map(e =>
@@ -201,112 +338,125 @@ $("tabs").addEventListener("click", e => {
   if (LAST) render();
 });
 
-// The map is drawn, not tabulated: the question on the left, work branching out
-// to each finding, the checks converging again, and a verdict at the end. Edges
-// carry colour so you can follow which evidence pushed a finding up or down.
+// ---- Drawing helpers shared by every view -----------------------------------
+// Colour carries meaning only: the three tiers, and how each check voted.
+// Everything structural is drawn in the page's own ink and greys.
 const trunc = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n-1) + "…" : s; };
-const CHECKS = [["lit","Literature"],["critic","Reviewer"],["testable","Measurable?"]];
+const CHECKS = [["lit","Literature"],["critic","Reviewer"],["testable","Measurable"]];
+const ICON = {ACT_ON:"✓", CHECK:"!", SET_ASIDE:"✕"};
+const VOTE_C = v => v > 0 ? "var(--go)" : v < 0 ? "var(--stop)" : "var(--idle)";
+const VOTE_W = v => v > 0 ? "supports" : v < 0 ? "doubts" : v === 0 ? "unclear" : "not run yet";
 
+// Two lines of text, cut on a word boundary, the second ending in "…" if long.
+function wrap2(str, n){
+  let a = "", b = "";
+  for (const w of String(str || "").split(/\s+/)) {
+    if (!b && (a + " " + w).trim().length <= n) a = (a + " " + w).trim();
+    else b = (b + " " + w).trim();
+  }
+  return [a, b.length > n ? b.slice(0, n-1).trimEnd() + "…" : b];
+}
+// A soft connector between two points.
+const curve = (x1, y1, x2, y2, dash) => `<path d="M${x1} ${y1} C${(x1+x2)/2} ${y1},
+  ${(x1+x2)/2} ${y2}, ${x2} ${y2}" fill="none" stroke="var(--muted)" stroke-opacity=".35"
+  stroke-width="1.4"${dash ? ' stroke-dasharray="4 5"' : ""}/>`;
+// The verdict as a pill: the tier's colour on the edge and the icon, ink for words.
+function pillSVG(x, y, tier, sel){
+  const w = 128, l = x - w/2;
+  if (!tier) return `<rect x="${l}" y="${y-16}" width="${w}" height="32" rx="16" fill="none"
+    stroke="var(--idle)" stroke-dasharray="4 4"/><text x="${x}" y="${y+4.5}" text-anchor="middle"
+    font-size="13" fill="var(--muted)">…</text>`;
+  return `<rect x="${l}" y="${y-16}" width="${w}" height="32" rx="16" fill="${SOFT[tier]}"
+      stroke="${sel ? "var(--ink)" : TONE[tier]}" stroke-width="${sel ? 2.2 : 1.2}"/>
+    <text x="${l+17}" y="${y+4.5}" font-size="13" font-weight="700" fill="${TONE[tier]}"
+      pointer-events="none">${ICON[tier]}</text>
+    <text x="${l+33}" y="${y+4.5}" font-size="13" font-weight="500" fill="var(--ink)"
+      pointer-events="none">${LABEL[tier]}</text>`;
+}
+const pillHTML = tier => tier
+  ? `<span class="vpill t-${tier}"><i>${ICON[tier]}</i>${LABEL[tier]}</span>`
+  : `<span class="vpill pend">…</span>`;
+
+// Flow: the run as a pipeline. One row per finding, read left to right: what
+// it claims, each check by name and how it voted, the router's sum, and the
+// tier. The steps that ran once for every finding sit in a strip above.
 function mapView(s){
   const t = s.trace || {shared: [], lanes: []};
   if (!t.shared.length && !t.lanes.length)
     return '<p class="sub">Ask a question to begin.</p>';
+  const by = Object.fromEntries(t.shared.map(n => [n.key, n]));
+  const lanes = t.lanes || [];
+  const ROW = 70, PAD = 40, W = 1120;
+  const H = Math.max(120, PAD + lanes.length * ROW + 8);
+  const X = {num:20, claim:44, chip:440, chipW:106, gap:10, route:822, routeW:126, verdict:1050};
 
-  const lanes = t.lanes.length ? t.lanes : [];
-  const W = 1120, BAND = 108, TOP = 108;
-  const H = Math.max(240, TOP + Math.max(lanes.length, 1) * BAND + 20);
-  const X = {q:16, gather:168, find:338, chk:566, route:736, tier:884};
-  const WD = {q:120, gather:150, find:200, chk:150, route:120, tier:220};
+  const stage = (n, name) => n
+    ? `<span class="fstage${n.state === "running" ? " run" : ""}"><b>${esc(name)}</b>${
+        esc(n.detail || n.label)}</span>`
+    : `<span class="fstage pend"><b>${esc(name)}</b>waiting</span>`;
+  const strip = `<div class="fstrip">
+      <span class="fstage"><b>Question</b>${esc(trunc(s.question, 64))}</span>
+      <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.papers, "Librarian")}
+      <span class="farr" aria-hidden="true">&rarr;</span>${stage(by.propose, "Analyst")}</div>`;
 
-  const col = n => n == null ? "var(--line)"
-    : n > 0 ? "var(--go)" : n < 0 ? "var(--stop)" : "var(--muted)";
-  const dim = st => st === "pending" ? 0.3 : 1;
+  let svg = lanes.length ? `<g font-family="var(--mono)" font-size="10.5" letter-spacing="1.2"
+      fill="var(--muted)"><text x="${X.claim}" y="${PAD - 14}">FINDING</text>
+      <text x="${X.chip}" y="${PAD - 14}">CHECKS</text>
+      <text x="${X.route}" y="${PAD - 14}">ROUTER</text>
+      <text x="${X.verdict}" y="${PAD - 14}" text-anchor="middle">VERDICT</text></g>` : "";
 
-  // A rounded box with its agent above and a line of detail below.
-  function box(x, y, w, h, o){
-    const stroke = o.accent || (o.state === "running" ? "var(--accent)" : "var(--line)");
-    const sw = o.state === "running" || o.accent ? 1.8 : 1;
-    return `<g opacity="${dim(o.state)}">
-      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9"
-        fill="${o.fill || 'var(--raised)'}" stroke="${stroke}" stroke-width="${sw}"/>
-      ${o.agent ? `<text x="${x+11}" y="${y+16}" font-size="8.5" font-family="var(--mono)"
-        letter-spacing="0.6" fill="var(--muted)">${esc(trunc(o.agent.toUpperCase(), 22))}</text>` : ""}
-      <text x="${x+11}" y="${y + (o.agent ? 32 : 22)}" font-size="11.5" font-weight="600"
-        fill="var(--ink)">${esc(trunc(o.label, Math.floor(w/6.6)))}</text>
-      ${o.detail ? `<text x="${x+11}" y="${y + (o.agent ? 47 : 38)}" font-size="10"
-        fill="var(--muted)">${esc(trunc(o.detail, Math.floor(w/5.6)))}</text>` : ""}
-    </g>`;
-  }
-  // A curve from the right edge of one box to the left edge of the next.
-  const edge = (x1,y1,x2,y2,c,on=true) =>
-    `<path d="M${x1} ${y1} C${(x1+x2)/2} ${y1}, ${(x1+x2)/2} ${y2}, ${x2} ${y2}"
-      fill="none" stroke="${c}" stroke-width="${on?1.6:1}" opacity="${on?0.85:0.3}"/>`;
-
-  const byKey = Object.fromEntries(t.shared.map(n => [n.key, n]));
-  const papers = byKey.papers, propose = byKey.propose;
-  const qy = TOP/2, gy1 = 34, gy2 = 92;
-
-  let svg = "";
-  // Question, then the two shared steps that run once.
-  svg += box(X.q, qy-22, WD.q, 44, {label:"Your question", detail:trunc(s.question, 22),
-    accent:"var(--accent)", fill:"var(--accent-soft)", state:"done"});
-  svg += edge(X.q+WD.q, qy, X.gather, gy1+26, "var(--line)");
-  svg += edge(X.q+WD.q, qy, X.gather, gy2+26, "var(--line)");
-  svg += box(X.gather, gy1, WD.gather, 52, papers
-    ? {agent:papers.agent, label:papers.label, detail:papers.detail, state:papers.state}
-    : {label:"Papers", state:"pending"});
-  svg += box(X.gather, gy2, WD.gather, 52, propose
-    ? {agent:propose.agent, label:propose.label, detail:propose.detail, state:propose.state}
-    : {label:"Findings", state:"pending"});
-
-  // One branch per finding: the claim, three checks, the router, the verdict.
   lanes.forEach((ln, i) => {
-    const cy = TOP + i*BAND + BAND/2;
-    const by = Object.fromEntries((ln.steps||[]).map(x => [x.key, x]));
-    svg += edge(X.gather+WD.gather, gy2+26, X.find, cy, "var(--line)");
-    svg += box(X.find, cy-30, WD.find, 60,
-      {agent:"Finding "+(i+1), label:trunc(ln.claim||"…", 26),
-       detail:trunc((ln.claim||"").slice(26), 30), state: ln.claim ? "done" : "pending"});
+    const y = PAD + i * ROW + ROW / 2;
+    const st = Object.fromEntries((ln.steps || []).map(x => [x.key, x]));
+    if (i % 2 === 0) svg += `<rect x="4" y="${y - ROW/2 + 4}" width="${W - 8}" height="${ROW - 8}"
+      rx="6" fill="var(--raised)" opacity=".7"/>`;
+
+    const [a, b] = wrap2(ln.claim || "Waiting for the analyst…", 52);
+    svg += `<g><title>${esc(ln.claim || "")}</title>
+      <circle cx="${X.num}" cy="${y}" r="12" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="${X.num}" y="${y + 4.5}" text-anchor="middle" font-size="12.5" font-weight="700"
+        fill="var(--ink)">${i + 1}</text>
+      <text x="${X.claim}" y="${y - (b ? 3 : -5)}" font-size="13.5" fill="var(--ink)">${esc(a)}${
+        b ? `<tspan x="${X.claim}" dy="18">${esc(b)}</tspan>` : ""}</text></g>`;
 
     CHECKS.forEach(([k, name], j) => {
-      const n = by[k], y = cy - 36 + j*26;
-      svg += edge(X.find+WD.find, cy, X.chk, y+11, col(n && n.vote), !!n);
-      svg += `<g opacity="${dim(n ? n.state : 'pending')}">
-        <rect x="${X.chk}" y="${y}" width="${WD.chk}" height="22" rx="7"
-          fill="var(--raised)" stroke="${n && n.state==='running' ? 'var(--accent)' : col(n && n.vote)}"
-          stroke-width="${n && n.vote != null ? 1.6 : 1}"/>
-        <text x="${X.chk+9}" y="${y+15}" font-size="10" fill="var(--ink)">
-          ${n && n.vote != null ? (n.vote>0?"+":n.vote<0?"−":"·") + " " : ""}${esc(name)}</text>
-        ${n && n.vote != null ? `<text x="${X.chk+WD.chk-9}" y="${y+15}" font-size="9"
-          text-anchor="end" font-family="var(--mono)" fill="${col(n.vote)}">${
-            n.vote>0?"supports":n.vote<0?"doubt":"neutral"}</text>` : ""}
-      </g>`;
-      svg += edge(X.chk+WD.chk, y+11, X.route, cy, col(n && n.vote), !!n);
+      const n = st[k], x = X.chip + j * (X.chipW + X.gap);
+      const voted = n && n.vote != null && n.state !== "running";
+      svg += `<g${n && n.state === "running" ? ' opacity=".5"' : ""}>
+        <title>${esc(name)}: ${VOTE_W(voted ? n.vote : undefined)}</title>
+        <rect x="${x}" y="${y - 14}" width="${X.chipW}" height="28" rx="14" fill="var(--surface)"
+          stroke="${voted ? VOTE_C(n.vote) : "var(--idle)"}" stroke-width="1.2"
+          ${n ? "" : 'stroke-dasharray="4 4"'}/>
+        <circle cx="${x + 15}" cy="${y}" r="4.5" fill="${voted ? VOTE_C(n.vote) : "none"}"
+          stroke="${voted ? "none" : "var(--idle)"}"/>
+        <text x="${x + 27}" y="${y + 4.5}" font-size="12" fill="var(--ink)">${esc(name)}</text></g>`;
     });
 
-    const rt = by.route;
-    svg += box(X.route, cy-20, WD.route, 40, rt
-      ? {label:"Jev router", detail:rt.detail, state:"done", accent:"var(--accent)"}
-      : {label:"Jev router", state:"pending"});
-    svg += edge(X.route+WD.route, cy, X.tier, cy,
-      ln.tier ? TONE[ln.tier] : "var(--line)", !!ln.tier);
-    svg += box(X.tier, cy-20, WD.tier, 40, ln.tier
-      ? {label:LABEL[ln.tier], detail:"trust "+ln.trust, state:"done",
-         accent:TONE[ln.tier], fill:SOFT[ln.tier]}
-      : {label:"—", state:"pending"});
+    const chipsEnd = X.chip + 3 * X.chipW + 2 * X.gap;
+    const rt = st.route;
+    svg += curve(chipsEnd + 4, y, X.route - 4, y, !rt);
+    svg += `<rect x="${X.route}" y="${y - 14}" width="${X.routeW}" height="28" rx="6"
+        fill="var(--surface)" stroke="var(--line)"/>
+      <text x="${X.route + X.routeW/2}" y="${y + 4.5}" text-anchor="middle" font-size="12"
+        font-family="var(--mono)" fill="${rt ? "var(--ink)" : "var(--muted)"}">${
+        rt ? esc(rt.detail.replace(/ from \d+ checks,/, " ·")) : "…"}</text>`;
+    svg += curve(X.route + X.routeW + 4, y, X.verdict - 68, y, !ln.tier);
+    svg += pillSVG(X.verdict, y, ln.tier, false);
   });
 
   return `<h2>How each finding was reached</h2>
-    <p class="sub" style="margin-bottom:12px">Every box is a step that actually ran.
-      Lines turn green where a check supported the finding and red where it raised a
-      doubt. Only the router and the testable check are plain code; the rest are models.</p>
-    <div class="map"><svg viewBox="0 0 ${W} ${H}" role="img" style="min-width:1000px;width:100%;height:auto"
-      aria-label="A map of how each finding was reached">${svg}</svg></div>
-    <div class="legend">
-      <span style="color:var(--go)">— supports</span>
-      <span style="color:var(--stop)">— raises a doubt</span>
-      <span style="color:var(--muted)">faded = not reached yet</span>
-    </div>`;
+    <p class="sub" style="margin-bottom:10px">Each row is one finding, read left to right: the
+      three checks and how each voted, the router's sum, and the tier it landed in. Only the
+      router and the measurable check are plain code; the rest are models.</p>
+    ${strip}
+    ${lanes.length ? `<div class="map" id="gwrap"><svg viewBox="0 0 ${W} ${H}" role="img"
+      style="min-width:900px;width:100%;height:auto"
+      aria-label="Each finding, its three checks, the router's sum and its tier">${svg}</svg></div>
+    <div class="key"><div class="krow"><b>Checks</b>
+      <span><i class="dot" style="background:var(--go)"></i>supports</span>
+      <span><i class="dot" style="background:var(--stop)"></i>raises a doubt</span>
+      <span><i class="dot" style="background:var(--idle)"></i>unclear</span>
+      <span>dashed = not run yet</span></div></div>` : ""}`;
 }
 
 // Papers grouped by where they came from, each with how well it matched.
@@ -337,19 +487,19 @@ function paper(p){
 // the flow view becomes a node here, every hand-off an edge. Click any node to
 // read what that agent actually decided.
 const KIND = {
-  // Bright, clearly different colours: the drawing is shrunk to fit the panel,
-  // so muted shades or near-matches stop being readable at that size.
-  question:  {c:"#818CF8", r:36, label:"Question"},
-  orch:      {c:"#A855F7", r:32, label:"Orchestrator"},
-  agent:     {c:"#EC4899", r:30, label:"Agent"},
-  finding:   {c:"#3B82F6", r:27, label:"Finding"},
-  check:     {c:"#22D3EE", r:21, label:"Check"},
-  paper:     {c:"#94A3B8", r:20, label:"Abstract only"},
-  paperfull: {c:"#34D399", r:23, label:"Full text read"},
-  router:    {c:"#F97316", r:23, label:"Jev router"},
-  ACT_ON:    {c:"#22C55E", r:26, label:"Act on it"},
-  CHECK:     {c:"#FACC15", r:26, label:"Check first"},
-  SET_ASIDE: {c:"#EF4444", r:26, label:"Set aside"},
+  // Structure is ink and grey; only the tiers carry colour, so colour always
+  // means something. This sets the inspector's edge for each kind of thing.
+  question:  {c:"var(--ink)",   label:"Question"},
+  orch:      {c:"var(--ink)",   label:"Analyst"},
+  agent:     {c:"var(--ink)",   label:"Librarian"},
+  finding:   {c:"var(--ink)",   label:"Finding"},
+  check:     {c:"var(--muted)", label:"Check"},
+  paper:     {c:"var(--idle)",  label:"Abstract only"},
+  paperfull: {c:"var(--ink)",   label:"Full text read"},
+  router:    {c:"var(--muted)", label:"Router"},
+  ACT_ON:    {c:"var(--go)",    label:"Act on it"},
+  CHECK:     {c:"var(--warn)",  label:"Check first"},
+  SET_ASIDE: {c:"var(--stop)",  label:"Set aside"},
 };
 
 // Three separate views, not one graph zoomed. Each level holds only the nodes
@@ -473,208 +623,15 @@ function buildGraph(s, level, pick){
   return {N, E};
 }
 
-function gridLayout(N, E, W, H){
-  const groups = {};
-  for (const n of N) {
-    const g = (/^(f\d+)/.exec(n.id) || [,"misc"])[1];
-    (groups[g] ||= []).push(n);
-  }
-  const keys = Object.keys(groups);
-  const cols = keys.length <= 2 ? keys.length : 2;   // wide cells read better
-  const rows = Math.ceil(keys.length / cols);
-  const cw = W / cols, ch = H / rows;
-  keys.forEach((k, gi) => {
-    const cx = cw * (gi % cols) + cw/2, cy = ch * Math.floor(gi/cols) + ch/2;
-    const g = groups[k];
-    const head = g.find(n => n.id === k) || g[0];
-    const checks = g.filter(n => n.kind === "check");
-    const jev = g.find(n => n.kind === "router");
-    const verdict = g.find(n => ["ACT_ON","CHECK","SET_ASIDE"].includes(n.kind));
-    // finding on the left, its checks stacked in the middle, Jev then the verdict
-    head.x = cx - cw*0.36; head.y = cy;
-    checks.forEach((n, i) => {
-      n.x = cx - cw*0.04;
-      n.y = cy + (i - (checks.length-1)/2) * 104;
-      n.side = -1;          // captions run left, into the gap before Jev
-    });
-    if (jev)     { jev.x = cx + cw*0.20; jev.y = cy; }
-    if (verdict) { verdict.x = cx + cw*0.41; verdict.y = cy; }
-  });
-}
-
-// Layout: a spring settles the graph into its own shape. Edges pull connected
-// work together, every node pushes its neighbours away, and a gentle pull to
-// the middle stops it drifting. The constants were searched rather than
-// guessed: with these, no two circles in a forty-node run come within 100px.
-function layout(N, E, W, H, grouped){
-  const idx = Object.fromEntries(N.map((n,i) => [n.id, i]));
-  if (grouped) return gridLayout(N, E, W, H);
-  const free = N.filter(n => !n.near);
-  free.forEach((n,i) => {
-    const a = i * 2.39;                 // a spiral start, so no two begin together
-    n.x = W/2 + Math.cos(a) * (150 + i*26);
-    n.y = H/2 + Math.sin(a) * (115 + i*18);
-    n.vx = n.vy = 0;
-  });
-  for (let step = 0; step < 800; step++){
-    for (let i = 0; i < free.length; i++) for (let j = i+1; j < free.length; j++){
-      const a = free[i], b = free[j];
-      let dx = b.x-a.x, dy = b.y-a.y;
-      const d2 = dx*dx + dy*dy || 1, d = Math.sqrt(d2);
-      const want = KIND[a.kind].r + KIND[b.kind].r + 150;
-      const push = d < want ? 100000/d2 * (want/d) : 45000/d2;
-      dx /= d; dy /= d;
-      a.vx -= dx*push; a.vy -= dy*push; b.vx += dx*push; b.vy += dy*push;
-    }
-    for (const e of E){
-      const a = N[idx[e.a]], b = N[idx[e.b]];
-      if (!a || !b || a.near || b.near) continue;
-      const dx = b.x-a.x, dy = b.y-a.y, d = Math.hypot(dx,dy) || 1;
-      const rest = KIND[a.kind].r + KIND[b.kind].r + 130;
-      const pull = (d - rest) * 0.016;
-      a.vx += dx/d*pull; a.vy += dy/d*pull; b.vx -= dx/d*pull; b.vy -= dy/d*pull;
-    }
-    for (const n of free){
-      n.vx += (W/2 - n.x) * 0.0018; n.vy += (H/2 - n.y) * 0.0026;
-      n.x += (n.vx *= 0.86); n.y += (n.vy *= 0.86);
-      const r = KIND[n.kind].r + 16;
-      n.x = Math.max(r+60, Math.min(W-r-60, n.x));
-      n.y = Math.max(r+24, Math.min(H-r-24, n.y));
-    }
-  }
-  // Children of a node ring around it; papers have no order worth keeping.
-  const kids = {};
-  for (const n of N) if (n.near) (kids[n.near] ||= []).push(n);
-  for (const [pid, list] of Object.entries(kids)){
-    const p = N[idx[pid]]; if (!p) continue;
-    // Spread the ring to fill the canvas rather than huddling near the centre.
-    const room = Math.min(W, H) * 0.40;
-    const ring = Math.max(KIND[p.kind].r + 120 + list.length * 12, room);
-    list.forEach((n,i) => {
-      const a = -Math.PI/2 + (i/list.length) * Math.PI*2;
-      n.x = p.x + Math.cos(a)*ring;
-      n.y = p.y + Math.sin(a)*ring*0.78;
-      n.side = Math.cos(a) >= 0 ? 1 : -1;
-    });
-  }
-}
-
-// One finding on its own gets a tidy cell instead of a spring.
-function gridLayout(N, E, W, H){
-  const checks = N.filter(n => n.kind === "check");
-  const head = N.find(n => n.kind === "finding");
-  const jev = N.find(n => n.kind === "router");
-  const verdict = N.find(n => ["ACT_ON","CHECK","SET_ASIDE"].includes(n.kind));
-  const cx = W/2, cy = H/2;
-  if (head) { head.x = cx - W*0.33; head.y = cy; }
-  checks.forEach((n, i) => {
-    n.x = cx - W*0.04;
-    n.y = cy + (i - (checks.length-1)/2) * 120;
-    n.side = -1;
-  });
-  if (jev)     { jev.x = cx + W*0.18; jev.y = cy; }
-  if (verdict) { verdict.x = cx + W*0.37; verdict.y = cy; }
-}
-
-// Where a node's caption goes: beside it when it sits on a ring, underneath
-// otherwise. Long titles wrap onto a second line rather than running off.
-function capText(n, k, cap){
-  const words = cap.split(" ");
-  let l1 = "", l2 = "";
-  for (const w of words) {
-    if ((l1 + " " + w).trim().length <= 22) l1 = (l1 + " " + w).trim();
-    else if ((l2 + " " + w).trim().length <= 22) l2 = (l2 + " " + w).trim();
-  }
-  if (l2) l2 += "\u2026";
-  if (n.side) {
-    const x = n.x + n.side * (k.r + 12), anc = n.side > 0 ? "start" : "end";
-    return `<text x="${x.toFixed(1)}" y="${(n.y - (l2 ? 4 : 2)).toFixed(1)}"
-      text-anchor="${anc}" font-size="13" fill="var(--muted)" pointer-events="none"
-      >${esc(l1)}${l2 ? `<tspan x="${x.toFixed(1)}" dy="16">${esc(l2)}</tspan>` : ""}</text>`;
-  }
-  return `<text x="${n.x.toFixed(1)}" y="${(n.y + k.r + 20).toFixed(1)}" text-anchor="middle"
-    font-size="13" fill="var(--muted)" pointer-events="none"
-    >${esc(l1)}${l2 ? `<tspan x="${n.x.toFixed(1)}" dy="16">${esc(l2)}</tspan>` : ""}</text>`;
-}
-
+// Each level is its own tidy view rather than one graph zoomed in and out.
 function graphView(s){
-  const {N, E} = buildGraph(s, LEVEL, PICK_F);
-  if (!N.length) return '<p class="sub">Ask a question to begin.</p>';
-  const grouped = LEVEL === 1 && PICK_F;   // only an isolated finding uses a cell
-  const W = Math.max(2000, Math.min(2600, 1150 + N.length * 22));
-  const H = Math.max(1200, Math.min(1550, 480 + N.length * 18));
-  layout(N, E, W, H, grouped);
-  // Crop to what was drawn, allowing for each circle's radius and its caption.
-  const rad = n => KIND[n.kind].r;
-  const ex0 = Math.min(...N.map(n => n.x - rad(n)));
-  const ex1 = Math.max(...N.map(n => n.x + rad(n)));
-  const ey0 = Math.min(...N.map(n => n.y - rad(n)));
-  const ey1 = Math.max(...N.map(n => n.y + rad(n)));
-  // Room for the captions that sit beside each circle, scaled to the drawing.
-  const padX = Math.max(60, Math.min(200, (ex1-ex0) * 0.14));
-  const padY = Math.max(30, Math.min(90,  (ey1-ey0) * 0.09));
-  const vx = ex0 - padX, vy = ey0 - padY;
-  const vw = (ex1 - ex0) + padX*2, vh = (ey1 - ey0) + padY*2;
-  const at = Object.fromEntries(N.map(n => [n.id, n]));
-  const tone = t => t === "up" ? "var(--go)" : t === "down" ? "var(--stop)" : "var(--line)";
+  return LEVEL === 0 ? runView(s) : LEVEL === 1 ? checksView(s) : papersView(s);
+}
 
-  const edges = E.map(e => {
-    const a = at[e.a], b = at[e.b]; if (!a || !b) return "";
-    const ra = KIND[a.kind].r, rb = KIND[b.kind].r;
-    const dx = b.x-a.x, dy = b.y-a.y, d = Math.hypot(dx,dy) || 1;
-    const x1 = a.x+dx/d*ra, y1 = a.y+dy/d*ra, x2 = b.x-dx/d*(rb+8), y2 = b.y-dy/d*(rb+8);
-    // The word sits just off the midpoint, nudged perpendicular to the line so
-    // it never lands on top of it.
-    const mx = (x1+x2)/2, my = (y1+y2)/2, nx = -dy/d, ny = dx/d;
-    return `<g><line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}"
-        y2="${y2.toFixed(1)}" stroke="${tone(e.tone)}" stroke-width="${e.tone?2.4:1.4}"
-        marker-end="url(#ar-${e.tone||'n'})" opacity="${e.tone?.92:.42}"/>
-      <text x="${(mx + nx*9).toFixed(1)}" y="${(my + ny*9 + 3).toFixed(1)}"
-        text-anchor="middle" font-size="11" font-family="var(--mono)"
-        letter-spacing="0.5" fill="var(--muted)" opacity="${e.tone?.9:.6}"
-        >${esc(e.label)}</text></g>`;
-  }).join("");
-
-  const nodes = N.map(n => {
-    const k = KIND[n.kind], sel = PICKED === n.id;
-    const running = n.info && n.info.state === "running";
-    const t = (n.info && n.info.title) || "";
-    const lab = n.text.toLowerCase(), tl = t.toLowerCase();
-    const cap = (!t || tl === lab || tl.startsWith(lab) || tl.startsWith("proposed")
-                 || n.kind === "check") ? "" : t;
-    return `<g class="gn" data-id="${esc(n.id)}" style="cursor:pointer">
-      ${running ? `<circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${k.r+6}"
-        fill="none" stroke="${k.c}" stroke-width="1.5" opacity=".5">
-        <animate attributeName="r" values="${k.r+4};${k.r+13};${k.r+4}" dur="1.7s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".55;0;.55" dur="1.7s" repeatCount="indefinite"/></circle>` : ""}
-      <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${k.r+9}" fill="${k.c}"
-        fill-opacity=".22" pointer-events="none"/>
-      <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${k.r}" fill="${k.c}"
-        stroke="${sel?'var(--ink)':'var(--surface)'}" stroke-width="${sel?4:2}"/>
-      <!-- Labels are often wider than their circle and sit on bright colours, so a
-           dark outline keeps the white words readable wherever they land. -->
-      <text x="${n.x.toFixed(1)}" y="${(n.y+6).toFixed(1)}" text-anchor="middle"
-        font-size="16" font-weight="700" fill="#fff" stroke="#0B111C" stroke-width="4"
-        stroke-linejoin="round" paint-order="stroke" pointer-events="none"
-        >${esc(trunc(n.text, 12))}</text>
-      ${cap ? capText(n, k, cap) : ""}
-    </g>`;
-  }).join("");
-
-  const marker = (t,c) => `<marker id="ar-${t}" viewBox="0 0 10 10" refX="9" refY="5"
-    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M0 0L10 5L0 10z" fill="${c}"/></marker>`;
-  const kinds = [...new Set(N.map(n => n.kind))];
-  const dots = kinds.map(k => `<span><i class="dot" style="background:${KIND[k].c}"></i>${KIND[k].label}</span>`).join("");
-  const arrows = [
-    ["var(--go)",   "supported the finding"],
-    ["var(--stop)", "raised a doubt"],
-    ["var(--line)", "passed work along"],
-  ].map(([c, t]) => `<span><i class="arr" style="background:${c}"></i>${t}</span>`).join("");
-  const legend = `<div class="key"><div class="krow"><b>Circles</b>${dots}</div>
-    <div class="krow"><b>Arrows</b>${arrows}</div></div>`;
-
-  // Step in and out. Each button names what you will see, not a zoom factor.
+// Everything around a view: the level buttons, the view itself, the way in and
+// out, the key, and the inspector for whatever was clicked. `html` views are
+// lists of buttons; the others are drawings.
+function graphFrame(N, W, H, inner, legend, html){
   const steps = LEVELS.map(l => `<button class="step" data-l="${l.id}"
     aria-pressed="${l.id === LEVEL}">${l.name}</button>`).join("");
   const deeper = LEVEL < 2
@@ -682,19 +639,198 @@ function graphView(s){
   const back = LEVEL > 0 ? `<button class="crumb" data-l="${LEVEL-1}">&larr; Back</button>` : "";
   const only = LEVEL === 1 && PICK_F
     ? `<button class="crumb" id="allf">Show every finding</button>` : "";
+  const tip = ["Click any row to see why it landed there, or go deeper to see each check.",
+               "Click any check to read its full reasoning.",
+               "Click any paper to read the passage the librarian matched."][LEVEL];
+  const body = html ? `<div id="gsvg" class="glist">${inner}</div>`
+    : `<div class="map" id="gwrap"><svg id="gsvg" viewBox="0 0 ${W} ${H}"
+        style="width:100%;height:auto" role="img"
+        aria-label="${esc(LEVELS[LEVEL].name)}: a map of the agents and their work">${inner}</svg></div>`;
 
   return `<div class="stepbar">${steps}</div>
     <h2>${esc(LEVELS[LEVEL].name)}</h2>
-    <p class="sub" style="margin-bottom:10px">${esc(LEVELS[LEVEL].hint)}
-      ${LEVEL === 0 ? "Click a finding, then go deeper to see only its checks." : ""}</p>
-    <div class="map" id="gwrap"><svg id="gsvg" viewBox="0 0 ${W} ${H}"
-      style="width:100%;height:auto" role="img"
-      aria-label="${esc(LEVELS[LEVEL].name)}: a map of the agents and their work">
-      <defs>${marker("up","var(--go)")}${marker("down","var(--stop)")}${marker("n","var(--line)")}</defs>
-      ${edges}${nodes}</svg></div>
+    <p class="sub" style="margin-bottom:12px">${esc(LEVELS[LEVEL].hint)} ${tip}</p>
+    ${body}
     <div class="navbar">${back}${only}${deeper}</div>
     ${legend}
     <div id="inspect">${inspect(N)}</div>`;
+}
+
+const VOTE_KEY = `<div class="key"><div class="krow"><b>Checks</b>
+    <span><i class="dot" style="background:var(--go)"></i>supports</span>
+    <span><i class="dot" style="background:var(--stop)"></i>raises a doubt</span>
+    <span><i class="dot" style="background:var(--idle)"></i>unclear</span></div></div>`;
+
+// "The run" as rows, not a spring. The question and the two agents sit on the
+// left; each finding is one row that reads left to right: its number, what it
+// claims, three dots for the three checks, and the tier it landed in.
+function runView(s){
+  const t = s.trace || {shared:[], lanes:[]};
+  const by = Object.fromEntries(t.shared.map(n => [n.key, n]));
+  const lanes = t.lanes || [];
+  const ROW = 68, PAD = 44;
+  const W = 1120, H = Math.max(300, PAD*2 + Math.max(lanes.length, 1) * ROW);
+  const mid = H / 2;
+  const X = {q:60, agent:220, find:400, cap:428, dots:880, verdict:1046};
+  const N = [];
+  const node = (id, kind, text, info, x, y) => { N.push({id, kind, text, info, x, y}); return N[N.length-1]; };
+  const ring = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r+4}" fill="none" stroke="var(--ink)"
+    stroke-width="1.3"><animate attributeName="r" values="${r+2};${r+10};${r+2}" dur="1.7s"
+    repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0;.6" dur="1.7s"
+    repeatCount="indefinite"/></circle>`;
+  // Agents are outlined in ink; the selected one fills, so no extra halo is needed.
+  const agent = (n, r, letter, caption, solid) => {
+    const on = solid || PICKED === n.id;
+    return `<g class="gn" data-id="${esc(n.id)}" style="cursor:pointer">
+      ${n.info && n.info.state === "running" ? ring(n.x, n.y, r) : ""}
+      <circle cx="${n.x}" cy="${n.y}" r="${r}" fill="${on ? "var(--ink)" : "var(--surface)"}"
+        stroke="var(--ink)" stroke-width="1.4"/>
+      <text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="14" font-weight="700"
+        fill="${on ? "var(--bg)" : "var(--ink)"}" pointer-events="none">${letter}</text>
+      <text x="${n.x}" y="${n.y + r + 18}" text-anchor="middle" font-size="12.5"
+        fill="var(--muted)" pointer-events="none">${caption}</text></g>`;
+  };
+
+  let bands = "", back = "", front = "";
+  const agentsY = by.papers && by.propose ? [mid - 62, mid + 62] : [mid, mid];
+
+  const q = node("q", "question", "Question", {title:"The scientist's question",
+    body:s.question || "(none yet)", who:"You",
+    why:"Everything below is an attempt to answer this.", saw:"—"}, X.q, mid);
+  front += agent(q, 24, "?", "Question", true);
+
+  let lib = null, ana = null;
+  if (by.papers) {
+    lib = node("lib", "agent", "Librarian", {title:by.papers.label, body:by.papers.detail,
+      who:by.papers.agent, state:by.papers.state,
+      why:"Searches and ranks published work so later checks have real evidence.",
+      saw:"the question"}, X.agent, agentsY[0]);
+    back += curve(X.q + 24, mid, X.agent - 20, lib.y);
+    front += agent(lib, 20, "L", "Librarian");
+  }
+  if (by.propose) {
+    ana = node("ana", "orch", "Analyst", {title:"Splits the question into findings",
+      body:by.propose.detail, who:by.propose.agent, state:by.propose.state,
+      why:"It decides what separate claims are worth checking. Every finding came from here.",
+      saw:"the question" + (by.papers ? " and the ranked passages" : "")}, X.agent, agentsY[1]);
+    back += curve(X.q + 24, mid, X.agent - 20, ana.y);
+    if (lib) back += `<line x1="${X.agent}" y1="${lib.y + 40}" x2="${X.agent}" y2="${ana.y - 22}"
+      stroke="var(--muted)" stroke-opacity=".35" stroke-width="1.4" stroke-dasharray="4 5"/>`;
+    front += agent(ana, 20, "A", "Analyst");
+  }
+
+  lanes.forEach((ln, i) => {
+    const y = PAD + ROW/2 + i * ROW, id = "f" + i, sel = PICKED === id;
+    const route = (ln.steps || []).find(x => x.key === "route");
+    node(id, "finding", "Finding " + (i+1), {title:"Finding " + (i+1),
+      body:ln.claim || "…", who:"Analyst",
+      why:"One of the claims the question was split into.",
+      saw:"the question and the ranked passages"}, X.find, y);
+    if (ana) back += curve(X.agent + 20, ana.y, X.find - 17, y);
+    if (i % 2 === 0) bands += `<rect x="${X.find - 30}" y="${y - ROW/2 + 4}" width="${W - X.find + 22}"
+      height="${ROW - 8}" rx="6" fill="var(--raised)" opacity=".7"/>`;
+
+    // The number and the claim are one click target, so the whole row selects.
+    const [l1, l2] = wrap2(ln.claim || "Waiting for the analyst…", 58);
+    front += `<g class="gn" data-id="${id}" style="cursor:pointer">
+      <title>${esc(ln.claim || "")}</title>
+      <circle cx="${X.find}" cy="${y}" r="13" fill="${sel ? "var(--ink)" : "var(--surface)"}"
+        stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="${X.find}" y="${y + 4.5}" text-anchor="middle" font-size="12.5" font-weight="700"
+        fill="${sel ? "var(--bg)" : "var(--ink)"}" pointer-events="none">${i + 1}</text>
+      <text x="${X.cap}" y="${y - (l2 ? 3 : -5)}" font-size="13.5" fill="var(--ink)"
+        font-weight="${sel ? 600 : 400}">${esc(l1)}${
+        l2 ? `<tspan x="${X.cap}" dy="18">${esc(l2)}</tspan>` : ""}</text></g>`;
+
+    // The three checks, as dots in a fixed order, each named on hover.
+    CHECKS.forEach(([k, name], j) => {
+      const st = (ln.steps || []).find(x => x.key === k);
+      const voted = st && st.vote != null && st.state !== "running";
+      front += `<circle cx="${X.dots + j*20}" cy="${y}" r="6.5"
+        fill="${voted ? VOTE_C(st.vote) : "none"}" stroke="${voted ? "none" : "var(--idle)"}"
+        stroke-width="1.4"><title>${esc(name)}: ${VOTE_W(voted ? st.vote : undefined)}</title></circle>`;
+    });
+
+    const vid = id + "_v";
+    node(vid, ln.tier || "router", ln.tier ? LABEL[ln.tier] : "Pending", {
+      title: ln.tier ? LABEL[ln.tier] : "Not routed yet",
+      body: ln.tier ? `Trust ${ln.trust}. ${route ? route.detail + "." : ""}` : "Waiting for the checks.",
+      who: route ? route.agent : "Jev router · plain code",
+      why: route ? route.why : "", saw: route ? route.saw : "",
+      took: route ? route.took : null, at: route ? route.at : null}, X.verdict, y);
+    front += `<g class="gn" data-id="${vid}" style="cursor:pointer">${
+      pillSVG(X.verdict, y, ln.tier, PICKED === vid)}</g>`;
+  });
+
+  const heads = lanes.length ? `<g font-family="var(--mono)" font-size="10.5" letter-spacing="1.2"
+      fill="var(--muted)"><text x="${X.cap}" y="${PAD - 14}">FINDING</text>
+      <text x="${X.dots + 20}" y="${PAD - 14}" text-anchor="middle">CHECKS</text>
+      <text x="${X.verdict}" y="${PAD - 14}" text-anchor="middle">VERDICT</text></g>` : "";
+  const legend = VOTE_KEY.replace("</div></div>",
+    "<span>left to right: literature, reviewer, measurable</span></div></div>");
+  return graphFrame(N, W, H, heads + bands + back + front, legend);
+}
+
+// "The checks": one card per finding (or only the one you picked), with each
+// check's vote and its reason in words, and the router's sum underneath.
+function checksView(s){
+  const {N} = buildGraph(s, 1, PICK_F);
+  const lanes = (s.trace && s.trace.lanes) || [];
+  if (!lanes.length) return graphFrame(N, 0, 0,
+    '<p class="sub">The checks appear once the analyst has proposed findings.</p>', "", true);
+  const chosen = /^f(\d+)$/.test(PICK_F || "") ? [+PICK_F.slice(1)] : lanes.map((_, i) => i);
+  const sel = id => PICKED === id ? " sel" : "";
+
+  const cards = chosen.map(i => {
+    const ln = lanes[i]; if (!ln) return "";
+    const f = "f" + i, st = Object.fromEntries((ln.steps || []).map(x => [x.key, x]));
+    const checks = CHECKS.map(([k, name]) => {
+      const c = st[k], voted = c && c.vote != null && c.state !== "running";
+      const v = voted ? c.vote : undefined;
+      return `<button class="gcheck gn${sel(f + "_" + k)}" data-id="${f}_${k}"${c ? "" : " disabled"}>
+        <span class="gck-top"><i class="vdot" style="background:${voted ? VOTE_C(v) : "transparent"};
+          border-color:${voted ? VOTE_C(v) : "var(--idle)"}"></i><b>${name}</b>
+          <span class="gvote">${VOTE_W(v)}</span></span>
+        <span class="gwhy">${esc(trunc(c ? (c.why || c.detail) : "Waiting…", 160))}</span>
+        <span class="gwho">${esc(c ? c.agent : "")}</span></button>`;
+    }).join("");
+    const rt = st.route;
+    return `<div class="gcard">
+      <button class="ghead gn${sel(f)}" data-id="${f}"><span class="gnum">${i + 1}</span>
+        <span class="gclaim">${esc(ln.claim || "…")}</span>${pillHTML(ln.tier)}</button>
+      <div class="gchecks">${checks}</div>
+      <button class="grule gn${sel(f + "_r")}" data-id="${f}_r"><b>Router</b>
+        <span>${esc(rt ? rt.detail : "waiting for the checks")}${
+          ln.tier ? ` &rarr; ${LABEL[ln.tier]}` : ""}</span>
+        <span class="gwho">plain code, no model</span></button>
+    </div>`;
+  }).join("");
+  return graphFrame(N, 0, 0, cards, VOTE_KEY, true);
+}
+
+// "The papers": every paper the librarian read, best match first, each with
+// how well it matched and whether the full text was read.
+function papersView(s){
+  const {N} = buildGraph(s, 2, null);
+  const ps = (s.papers || []).slice(0, 12), st = s.lit_stats || {};
+  const sel = id => PICKED === id ? " sel" : "";
+  if (!ps.length) return graphFrame(N, 0, 0,
+    '<p class="sub">Papers appear once the librarian has searched.</p>', "", true);
+  const head = `<button class="ghead gbox gn${sel("lib")}" data-id="lib"><span class="gnum">L</span>
+    <span class="gclaim">Searched for: ${esc(st.ranked_for || s.question || "")}
+      <span class="gwho">${st.papers || ps.length} papers · ${st.full || 0} read in full ·
+        ${st.passages || 0} strong passages</span></span></button>`;
+  const rows = ps.map((p, i) => `<button class="gpaper gn${sel("p" + i)}" data-id="p${i}">
+      <span class="grel" title="How well it matched the question"><span class="grel-bar">
+        <i style="width:${Math.max(3, p.relevance)}%"></i></span><b>${p.relevance}%</b></span>
+      <span class="gp-main"><span class="gp-title">${esc(p.title)}</span>
+        <span class="gwho">${esc([p.journal, p.year].filter(Boolean).join(" · "))}${
+          p.pmid ? " · PMID " + esc(p.pmid) : ""}</span></span>
+      <span class="tag${p.full_text ? " on" : ""}">${p.full_text ? "full text" : "abstract"}</span>
+    </button>`).join("");
+  const legend = `<div class="key"><div class="krow"><b>Match</b>
+    <span>bar = how well the paper's best passage matched your question</span></div></div>`;
+  return graphFrame(N, 0, 0, head + `<div class="gpapers">${rows}</div>`, legend, true);
 }
 
 function inspect(N){
@@ -765,7 +901,7 @@ function listView(s){
     .sort((a,b) => b.trust - a.trust).map(c => `
       <div class="claim ${c.tier}">
         <div class="ch"><div>${esc(c.text)}</div>
-          <span class="pill p-${c.tier}">${LABEL[c.tier]}</span></div>
+          ${pillHTML(c.tier)}</div>
         ${c.votes.map(v => `<div class="v">
           <span class="m ${v.v>0?'up':v.v<0?'down':'flat'}">${v.v>0?'+':v.v<0?'−':'·'}</span>
           <span><b>${esc(v.n)}</b><br><span class="d">${esc(v.d)}</span></span></div>`).join("")}
@@ -780,6 +916,35 @@ $("go").onclick = async () => {
   if (b.error) $("err").textContent = b.error;
 };
 
+// Four stages in one row, filled in as the run moves, with the latest step
+// underneath. Replaces scrolling a log to find out where things are.
+function tracker(s){
+  if (s.status === "idle" && !s.steps.length) return "";
+  const t = s.trace || {shared:[], lanes:[]};
+  const by = Object.fromEntries(t.shared.map(n => [n.key, n]));
+  const lanes = t.lanes || [], routed = lanes.filter(l => l.tier).length;
+  const ended = s.status === "done", failed = s.status === "error";
+  const st = n => !n ? "wait" : n.state === "running" ? "now" : n.state === "skipped" ? "skip" : "done";
+  const checks = !by.propose || by.propose.state !== "done" ? "wait"
+    : routed === lanes.length && lanes.length ? "done" : "now";
+  const count = k => (s.claims || []).filter(c => c.tier === k).length;
+  const stages = [
+    ["Papers", st(by.papers), by.papers && by.papers.state !== "running" ? by.papers.detail : ""],
+    ["Findings", st(by.propose), by.propose && by.propose.state === "done" ? `${lanes.length} proposed` : ""],
+    ["Checks", checks, lanes.length ? `${routed} of ${lanes.length} checked` : ""],
+    ["Sorted", ended ? "done" : "wait", ended ? ["ACT_ON","CHECK","SET_ASIDE"]
+      .map(k => `${count(k)} ${ICON[k]}`).join(" · ") : ""],
+  ];
+  const mark = {done:"✓", now:"", wait:"", skip:"–"};
+  const now = failed ? "Stopped." : ended ? "" : (s.steps[s.steps.length - 1] || {}).t || "";
+  return `<ol class="stages">${stages.map(([name, state, note], i) => `
+      <li class="stg ${state}${failed && state === "now" ? " fail" : ""}">
+        <span class="stg-dot">${state === "now" ? "" : mark[state] || i + 1}</span>
+        <span class="stg-txt"><b>${name}</b><span>${esc(note || (state === "now" ? "working…" : ""))}</span></span>
+      </li>`).join("")}</ol>
+    ${now ? `<p class="stg-now">${esc(now)}</p>` : ""}`;
+}
+
 async function poll(){
   try {
     const s = await (await fetch("/api/state")).json();
@@ -789,11 +954,23 @@ async function poll(){
     $("calls").textContent = s.calls;
     $("spend").textContent = s.spend.toFixed(2);
     $("err").textContent = s.error || "";
+    if (s.demo) {
+      $("status").textContent += " Demo: a saved sample run, no API calls."
+        + " Papers are real; findings and verdicts are examples.";
+      if (s.question) $("q").value = s.question;
+    }
 
+    // The server writes "starting X" lines and never revisits them, so a line
+    // counts as finished once anything came after it, or the run ended well.
+    const last = s.steps.length - 1;
     $("steps").innerHTML = s.steps.length
-      ? s.steps.map(x => `<div class="${x.done?'done':''}">${x.done?'✓':'·'} ${esc(x.t)}</div>`).join("")
+      ? s.steps.map((x, i) => {
+          const done = x.done || i < last || s.status === "done";
+          return `<div class="${done ? "done" : "now"}">${done ? "✓" : "•"} ${esc(x.t)}</div>`;
+        }).join("")
       : "<div>Nothing running.</div>";
     $("steps").scrollTop = $("steps").scrollHeight;
+    $("tracker").innerHTML = tracker(s);
 
     const fresh = !LAST || (LAST.trace && s.trace &&
       JSON.stringify(LAST.trace) !== JSON.stringify(s.trace));

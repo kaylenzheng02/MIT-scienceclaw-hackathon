@@ -1,0 +1,204 @@
+{
+ "_note": "Sample run for demo mode. Papers are real (Europe PMC via Quorum); the findings and agent replies are hand-written examples, not live model output.",
+ "question": "Does higher ESR1 expression predict better survival in ER-positive breast cancer?",
+ "papers": [
+  {
+   "pmid": "42708797",
+   "title": "PGR expression as a pharmacogenomic companion biomarker to GENE70-derived genomic risk in ER-positive/HER2-negative breast cancer ",
+   "authors": "Can O.",
+   "journal": "Pak J Pharm Sci",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 100,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Cox regression, Kaplan-Meier analysis and subgroup comparisons were used to assess relationships between PGR expression, clinicopathologic variables, molecular features and survival outcomes. Results Across the three independent cohorts, low transcriptomic PGR expression was consistently associated "
+  },
+  {
+   "pmid": "42794648",
+   "title": "Study of Estrogen Receptor-Mediated PGx-eQTLs Identifies Genetic Determinants of Breast Cancer Endocrine Therapy Response",
+   "authors": "Meng M et al.",
+   "journal": "Int J Mol Sci",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 85,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "We identified two ER-mediated PGx-eQTL SNP-gene pairs associated with breast cancer prognosis post-treatment with E2 or TAM. Notable loci included E2-regulated MRPL15 and TAM-regulated SYCP3 , which have effects in a genotype-dependent manner, with genotype-dependent survival outcomes, from worse to"
+  },
+  {
+   "pmid": "42811741",
+   "title": "Optimizing the ER Cutoff in HER2-Positive Breast Cancer: ER ≥ 50% Predicts Low pCR Rates and Resistance to Antibody-Drug Conjugates in the Neoadjuvant Setting",
+   "authors": "Du T et al.",
+   "journal": "Cancer Med",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 60,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Results ER ≥ 50% positivity was identified as the optimal predictive cutoff (bootstrap 95% CI: 25.0%-77.5%) and was an independent predictor of significantly lower pCR rates in multivariate analysis (OR = 0.27; 95% CI: 0.19-0.40; p Conclusions ER ≥ 50% positivity defines a clinically and biologicall"
+  },
+  {
+   "pmid": "42943732",
+   "title": "Exploring the Underlying Molecular Mechanisms of Chaetomugilin Q in Breast Cancer Using Network Pharmacology, Molecular Docking, and Bioinformatics",
+   "authors": "He Q et al.",
+   "journal": "Molecules",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 36,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Bioinformatics analyses based on independent public databases indicated that these candidate core targets exhibited differential expression at the mRNA and protein levels and were associated with patient prognosis, mutation status, and immune cell infiltration, providing clinical and biological cont"
+  },
+  {
+   "pmid": "36334560",
+   "title": "Tumour break load is a biologically relevant feature of genomic instability with prognostic value in colorectal cancer",
+   "authors": "Lakbir S et al.",
+   "journal": "Eur J Cancer",
+   "year": "2022",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 35,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter"
+  },
+  {
+   "pmid": "29625055",
+   "title": "An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics",
+   "authors": "Liu J et al.",
+   "journal": "Cell",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 34,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co"
+  },
+  {
+   "pmid": "42820285",
+   "title": "Breast cancer immunogenicity as a spectrum: evolving concepts and therapeutic implications",
+   "authors": "Kay J et al.",
+   "journal": "J Clin Invest",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 32,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Immunotherapy has revolutionized the therapeutic landscape for many cancers, but its application in solid tumors has lagged. There is now evidence that immunotherapy can improve outcomes in triple-negative breast cancer, but hormone receptor-positive (HR+) breast cancer has traditionally been consid"
+  },
+  {
+   "pmid": "42472109",
+   "title": "The role of serologic biomarkers \"liquid biopsy\" in the fight against breast cancer: From biological foundations to clinical impact",
+   "authors": "Li Y et al.",
+   "journal": "iScience",
+   "year": "2026",
+   "shelf": "Found by search",
+   "relevance": 21,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Liquid biopsy, analyzing circulating tumor-derived components, including ctDNA, circulating tumor cells, microRNAs, and exosomes, has emerged as a key tool in precision oncology. This review synthesizes evidence from the past five years, covering biological mechanisms, analytical platforms, clinical"
+  },
+  {
+   "pmid": "29617662",
+   "title": "Driver Fusions and Their Implications in the Development and Treatment of Human Cancers",
+   "authors": "Gao Q et al.",
+   "journal": "Cell Rep",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 18,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy."
+  },
+  {
+   "pmid": "29850653",
+   "title": "Landscape of Microsatellite Instability Across 39 Cancer Types",
+   "authors": "Bonneville R et al.",
+   "journal": "JCO Precis Oncol",
+   "year": "2017",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 17,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average"
+  },
+  {
+   "pmid": "29622463",
+   "title": "Genomic and Functional Approaches to Understanding Cancer Aneuploidy",
+   "authors": "Taylor AM et al.",
+   "journal": "Cancer Cell",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 13,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl"
+  },
+  {
+   "pmid": "29625048",
+   "title": "Cell-of-Origin Patterns Dominate the Molecular Classification of 10,000 Tumors from 33 Types of Cancer",
+   "authors": "Hoadley KA et al.",
+   "journal": "Cell",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 8,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "We conducted comprehensive integrative molecular analyses of the complete set of tumors in The Cancer Genome Atlas (TCGA), consisting of approximately 10,000 specimens and representing 33 types of cancer. We performed molecular clustering using data on chromosome-arm-level aneuploidy, DNA hypermethy"
+  },
+  {
+   "pmid": "29625050",
+   "title": "Oncogenic Signaling Pathways in The Cancer Genome Atlas",
+   "authors": "Sanchez-Vega F et al.",
+   "journal": "Cell",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 7,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan"
+  },
+  {
+   "pmid": "29596782",
+   "title": "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines",
+   "authors": "Ellrott K et al.",
+   "journal": "Cell Syst",
+   "year": "2018",
+   "shelf": "Pan-Cancer Atlas",
+   "relevance": 1,
+   "full_text": false,
+   "paragraphs": 0,
+   "passage": "The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr"
+  }
+ ],
+ "lit_stats": {
+  "papers": 17,
+  "full": 0,
+  "passages": 12,
+  "ranked_for": "Does higher ESR1 expression predict better survival in ER-positive breast cancer?"
+ },
+ "passages": "[PMID 42708797] Cox regression, Kaplan-Meier analysis and subgroup comparisons were used to assess relationships between PGR expression, clinicopathologic variables, molecular features and survival outcomes. Results Across the three independent cohorts, low transcriptomic PGR expression was consistently associated \n\n[PMID 42794648] We identified two ER-mediated PGx-eQTL SNP-gene pairs associated with breast cancer prognosis post-treatment with E2 or TAM. Notable loci included E2-regulated MRPL15 and TAM-regulated SYCP3 , which have effects in a genotype-dependent manner, with genotype-dependent survival outcomes, from worse to\n\n[PMID 42811741] Results ER ≥ 50% positivity was identified as the optimal predictive cutoff (bootstrap 95% CI: 25.0%-77.5%) and was an independent predictor of significantly lower pCR rates in multivariate analysis (OR = 0.27; 95% CI: 0.19-0.40; p Conclusions ER ≥ 50% positivity defines a clinically and biologicall\n\n[PMID 42943732] Bioinformatics analyses based on independent public databases indicated that these candidate core targets exhibited differential expression at the mRNA and protein levels and were associated with patient prognosis, mutation status, and immune cell infiltration, providing clinical and biological cont\n\n[PMID 36334560] RNA gene expression data of microsatellite stable (MSS) CRC samples were used to train an RNA-based TBL classifier. Dichotomised DNA-based TBL data were used for survival analysis. Results TBL shows large variation in CRC with poor correlation to tumour mutational burden and fraction of genome alter\n\n[PMID 29625055] For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data co\n\n[PMID 42820285] Immunotherapy has revolutionized the therapeutic landscape for many cancers, but its application in solid tumors has lagged. There is now evidence that immunotherapy can improve outcomes in triple-negative breast cancer, but hormone receptor-positive (HR+) breast cancer has traditionally been consid\n\n[PMID 42472109] Liquid biopsy, analyzing circulating tumor-derived components, including ctDNA, circulating tumor cells, microRNAs, and exosomes, has emerged as a key tool in precision oncology. This review synthesizes evidence from the past five years, covering biological mechanisms, analytical platforms, clinical\n\n[PMID 29617662] Finally, we identified druggable fusions involving genes such as TMPRSS2, RET, FGFR3, ALK, and ESR1 in 6.0% of cases, and we predicted immunogenic peptides, suggesting that fusions may provide leads for targeted drug and immune therapy.\n\n[PMID 29850653] Results We identified MSI in 3.8% of all cancers assessed-present in 27 of tumor types-most notably adrenocortical carcinoma (ACC), cervical cancer (CESC), and mesothelioma, in which MSI has not yet been well described. In addition, MSI-high ACC and CESC tumors were observed to have a higher average\n\n[PMID 29622463] Aneuploidy, whole chromosome or chromosome arm imbalance, is a near-universal characteristic of human cancers. In 10,522 cancer genomes from The Cancer Genome Atlas, aneuploidy was correlated with TP53 mutation, somatic mutation rate, and expression of proliferation genes. Aneuploidy was anti-correl\n\n[PMID 29625048] We conducted comprehensive integrative molecular analyses of the complete set of tumors in The Cancer Genome Atlas (TCGA), consisting of approximately 10,000 specimens and representing 33 types of cancer. We performed molecular clustering using data on chromosome-arm-level aneuploidy, DNA hypermethy\n\n[PMID 29625050] Genetic alterations in signaling pathways that control cell-cycle progression, apoptosis, and cell growth are common hallmarks of cancer, but the extent, mechanisms, and co-occurrence of alterations in these pathways differ between individual tumors and tumor types. Using mutations, copy-number chan\n\n[PMID 29596782] The Cancer Genome Atlas (TCGA) cancer genomics dataset includes over 10,000 tumor-normal exome pairs across 33 different cancer types, in total >400 TB of raw data files requiring analysis. Here we describe the Multi-Center Mutation Calling in Multiple Cancers project, our effort to generate a compr",
+ "analyst": "Tumours with higher ESR1 mRNA expression show longer overall survival than those in the lowest quartile of ER-positive breast cancer.\nHigh ESR1 expression predicts greater benefit from adjuvant endocrine therapy such as tamoxifen.\nESR1 expression is associated with lower Ki-67 proliferation scores in ER-positive tumours.\nActivating ESR1 mutations in metastatic disease are associated with shorter progression-free survival on aromatase inhibitors.\nESR1 levels matter for prognosis in breast cancer.",
+ "replies": {
+  "Tumours with higher ESR1 mRNA expression show longer overall survival than those in the lowest quartile of ER-positive breast cancer.": {
+   "librarian": "SUPPORTED - Passages link high ER expression levels to better outcomes in ER-positive cohorts.",
+   "critic": "SOUND - Specific, testable against TCGA survival data, and consistent with the ranked passages."
+  },
+  "High ESR1 expression predicts greater benefit from adjuvant endocrine therapy such as tamoxifen.": {
+   "librarian": "SUPPORTED - ER level is described as a predictor of endocrine response in the retrieved work.",
+   "critic": "SOUND - Clear direction and a measurable treatment outcome; passages are on topic."
+  },
+  "ESR1 expression is associated with lower Ki-67 proliferation scores in ER-positive tumours.": {
+   "librarian": "UNCLEAR - No retrieved passage reports Ki-67 against ESR1 level directly.",
+   "critic": "SHAKY - Plausible, but the passages never measure proliferation, so nothing here supports it."
+  },
+  "Activating ESR1 mutations in metastatic disease are associated with shorter progression-free survival on aromatase inhibitors.": {
+   "librarian": "SUPPORTED - Several passages discuss ESR1-mutated advanced disease and endocrine resistance.",
+   "critic": "SHAKY - This is about mutations, not expression level, so it drifts from the question asked."
+  },
+  "ESR1 levels matter for prognosis in breast cancer.": {
+   "librarian": "UNCLEAR - Too broad to match against any specific passage.",
+   "critic": "SHAKY - No direction, cohort or outcome; no experiment could settle it."
+  }
+ }
+}

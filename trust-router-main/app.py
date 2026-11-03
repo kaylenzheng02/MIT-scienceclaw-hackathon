@@ -123,7 +123,7 @@ def lane_step(i: int, key: str, label: str, agent: str, state: str,
     with LOCK:
         for s in ln["steps"]:
             if s["key"] == key:
-                s.update(state=state, detail=detail or s["detail"], vote=vote)
+                s.update(state=state, detail=detail or s["detail"], vote=vote, label=label)
                 if state != "running":
                     s["took"] = round(now - s.get("started", now), 1)
                     s["at"] = now
@@ -160,6 +160,32 @@ class Client:
         return "".join(b.text for b in r.content if b.type == "text").strip()
 
 
+# Demo mode replays demo_run.json through the real pipeline: the same routing
+# code runs, but canned replies stand in for the models, so it needs no key and
+# costs nothing. Start it with:  python app.py --demo
+DEMO = "--demo" in sys.argv
+DEMO_FILE = HERE / "demo_run.json"
+
+
+class DemoClient:
+    """Answers like Client, from the saved run, with a pause so progress shows."""
+
+    def __init__(self, demo: dict):
+        self.demo = demo
+
+    def ask(self, model: str, prompt: str, max_tokens: int = 900) -> str:
+        time.sleep(0.8)
+        with LOCK:
+            STATE["calls"] += 1
+        if model == ANALYST:
+            return self.demo["analyst"]
+        role = "librarian" if model == LIBRARIAN else "critic"
+        for claim, reply in self.demo["replies"].items():
+            if claim in prompt:
+                return reply[role]
+        return "UNCLEAR - not in the saved run."
+
+
 def cycle_node(cycle: int, key: str, label: str, agent: str, state: str,
                detail: str = "") -> None:
     """A step in one round of the loop, for the map to draw."""
@@ -186,17 +212,30 @@ def parse_claims(text: str) -> list[str]:
 
 def run(question: str, cap: float) -> None:
     try:
+        demo = json.loads(DEMO_FILE.read_text(encoding="utf-8")) if DEMO else None
+        if demo:
+            question = demo["question"]   # the canned replies only fit this question
         with LOCK:
             STATE.update({"status": "running", "tick": time.time(),
-                          "question": question, "steps": [],
+                          "question": question, "steps": [], "demo": DEMO,
                           "claims": [], "papers": [], "lit_stats": {}, "spend": 0.0, "calls": 0,
                           "error": "", "trace": {"shared": [], "lanes": []}})
-        c = Client(cap)
+        c = DemoClient(demo) if demo else Client(cap)
 
         # 1. Papers first, so the critic has real evidence to judge against.
         passages = ""
         shared_node("papers", "Searching papers", "Librarian", "running")
-        if LIT is not None:
+        if demo:
+            step("Librarian: loading the saved papers (demo)")
+            time.sleep(1.2)
+            with LOCK:
+                STATE["papers"], STATE["lit_stats"] = demo["papers"], demo["lit_stats"]
+            passages = demo["passages"]
+            found = (f"{demo['lit_stats']['papers']} papers, "
+                     f"{demo['lit_stats']['passages']} relevant passages")
+            shared_node("papers", "Read the literature", "Librarian", "done", found)
+            step(f"Librarian: read {found}", done=True)
+        elif LIT is not None:
             step("Librarian: searching published papers")
             try:
                 lib = LIT.library(question)
@@ -345,15 +384,15 @@ def run(question: str, cap: float) -> None:
             STATE["error"] = f"{e.__class__.__name__}: {e}"
 
 
-def page() -> str:
+def page(name: str = "app.html") -> str:
     """
-    Read the page from disk on every request.
+    Read a page from disk on every request.
 
-    Loading it once at startup means an edit to app.html does nothing until the
+    Loading it once at startup means an edit to the HTML does nothing until the
     server is restarted, which is a confusing way to lose ten minutes.
     """
-    f = HERE / "app.html"
-    return f.read_text() if f.exists() else "<h1>app.html is missing</h1>"
+    f = HERE / name
+    return f.read_text(encoding="utf-8") if f.exists() else f"<h1>{name} is missing</h1>"
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -374,8 +413,10 @@ class Handler(BaseHTTPRequestHandler):
                     out["error"] = ("That run stopped without finishing. "
                                     "Press Run again.")
                 self._send(json.dumps(out).encode(), "application/json")
+        elif path in ("/", "/index.html"):
+            self._send(page("landing.html").encode(), "text/html; charset=utf-8")
         else:
-            self._send(page().encode(), "text/html; charset=utf-8")
+            self._send(page("app.html").encode(), "text/html; charset=utf-8")
 
     def do_POST(self):
         if urlparse(self.path).path != "/api/run":
@@ -398,9 +439,14 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    if not os.environ.get("ANTHROPIC_API_KEY"):
+    if not DEMO and not os.environ.get("ANTHROPIC_API_KEY"):
         sys.exit("Set ANTHROPIC_API_KEY first:\n"
-                 "  ANTHROPIC_API_KEY=sk-ant-... python3 app.py")
-    print(f"Open http://localhost:{PORT}  (ctrl-C to stop)")
-    print(f"Papers: {'on, via Quorum' if LIT else 'off'}")
+                 "  ANTHROPIC_API_KEY=sk-ant-... python3 app.py\n"
+                 "Or try it free with saved results:  python3 app.py --demo")
+    print(f"Open http://localhost:{PORT}  (the app is at /app, ctrl-C to stop)")
+    STATE["demo"] = DEMO   # so the page can say so before the first run
+    if DEMO:
+        print("Demo mode: replays a saved run. No API key used, nothing is spent.")
+    else:
+        print(f"Papers: {'on, via Quorum' if LIT else 'off'}")
     ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
